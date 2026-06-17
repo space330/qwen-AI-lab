@@ -1,0 +1,7 @@
+Meet Qwen Agent Lab, a local AI agent for untangling complex work.
+Start with a question. The console keeps notes, files, and next steps in one calm place.
+As the agent works, each step becomes visible: plan, tool, result, and answer.
+Need a calculation, a source check, or a file read? The cursor guides the work without breaking your flow.
+Drop in a spreadsheet. It turns raw rows into a summary you can understand, then a chart you can use.
+Your data stays on your machine, and your keys stay private.
+Qwen Agent Lab. A local-first thinking partner, ready when you are.

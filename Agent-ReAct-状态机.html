@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qwen Agent Lab · ReAct Agent 控制流解析图</title>
+<style>
+  :root{
+    --bg:#0f0b07; --grid:#2c1c0e; --panel:#241608; --panel2:#2e1d0c;
+    --amber:#d87408; --amber-br:#f2a327; --cream:#ffdca5; --muted:#b89066;
+    --line:#5a3c1f; --ok:#8fc06a; --red:#d2603a; --redbg:#34160d;
+    --okbg:#152012; --mono:"Cascadia Code","Consolas","SFMono-Regular",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    background:var(--bg);color:var(--cream);padding:28px 18px 50px}
+  .wrap{max-width:1200px;margin:0 auto}
+  header{margin-bottom:18px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--amber-br)}
+  h1{font-size:27px;font-weight:800;margin:6px 0 4px;color:var(--cream)}
+  .sub{color:var(--muted);font-size:13px}
+  .meta{font-family:var(--mono);font-size:12px;color:var(--amber-br);margin-top:10px;
+    display:flex;gap:18px;flex-wrap:wrap}
+  .meta b{color:var(--cream)}
+
+  .board{background:
+      linear-gradient(var(--grid) 1px,transparent 1px) 0 0/30px 30px,
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/30px 30px,
+      radial-gradient(900px 500px at 50% 0%,#1c130a,var(--bg));
+    border:1px solid var(--line);border-radius:14px;padding:8px;margin:14px 0}
+  svg{width:100%;height:auto;display:block}
+
+  /* SVG node text */
+  .nt{font-family:var(--mono);font-size:13px;font-weight:700;fill:var(--cream)}
+  .nc{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+  .dt{font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--amber-br)}
+  .el{font-family:var(--mono);font-size:11.5px;font-weight:700;fill:var(--cream)}
+  .grp{font-family:var(--mono);font-size:11px;font-weight:700;fill:var(--amber);letter-spacing:1px}
+
+  .legend{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--muted);margin:6px 4px 0}
+  .legend i{display:inline-block;width:26px;height:0;vertical-align:middle;margin-right:6px;border-top-width:3px;border-top-style:solid}
+
+  .panels{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card h3{font-size:14px;color:var(--amber-br);margin-bottom:10px;font-family:var(--mono);letter-spacing:1px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase}
+  td code,.k{font-family:var(--mono);color:var(--amber-br);font-size:12px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:5px;
+    border:1px solid var(--line);color:var(--cream);background:var(--panel2)}
+  .pill-red{border-color:var(--red);color:var(--red)}
+  .pill-ok{border-color:var(--ok);color:var(--ok)}
+  ul{list-style:none;font-size:12.5px;color:var(--cream)}
+  ul li{padding:5px 0;border-bottom:1px solid var(--line)}
+  ul li:last-child{border:none}
+  ul .k{display:inline-block;min-width:120px}
+  @media(max-width:780px){.panels{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Engineering Analysis · server/agentExecutor.js</div>
+    <h1>ReAct Agent 控制流解析图</h1>
+    <div class="sub">async generator · 工具调用循环 (Reason → Act → Observe) · 事件以 NDJSON 实时下发，驱动前端「工具链时光轴」</div>
+    <div class="meta">
+      <span><b>maxIterations</b> = 5</span>
+      <span><b>maxToolSteps</b> = 8</span>
+      <span><b>tools</b> calculator · file_reader · web_search</span>
+      <span><b>events</b> tool_start · tool_result · tool_error · final</span>
+    </div>
+  </header>
+
+  <div class="board">
+  <svg viewBox="0 0 1180 1320" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="aA" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#d87408"/></marker>
+      <marker id="aR" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#d2603a"/></marker>
+      <marker id="aG" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#8fc06a"/></marker>
+      <marker id="aC" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#ffdca5"/></marker>
+    </defs>
+
+    <!-- inner loop container -->
+    <rect x="38" y="538" width="1030" height="508" rx="14" fill="none" stroke="#5a3c1f" stroke-dasharray="6 5" opacity=".7"/>
+    <text class="grp" x="52" y="558">FOR EACH toolCall  ·  单轮模型回合可请求多个工具</text>
+
+    <!-- ===== EDGES ===== -->
+    <!-- START -> D0 -->
+    <path d="M420,70 L420,108" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+    <!-- D0 -> callModel (yes) -->
+    <path d="M420,191 L420,226" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+    <text class="el" x="430" y="212">是</text>
+    <!-- callModel -> D1 -->
+    <path d="M420,284 L420,324" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+    <!-- D1 -> echo (yes) -->
+    <path d="M420,407 L420,444" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+    <text class="el" x="430" y="430">是</text>
+    <!-- echo -> D2 -->
+    <path d="M420,524 L420,538" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+    <!-- D2 -> stepStart (no) -->
+    <path d="M420,621 L420,658" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+    <text class="el" x="430" y="644">否</text>
+    <!-- stepStart -> D3 -->
+    <path d="M420,716 L420,754" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+    <!-- D3 -> D4 (yes) -->
+    <path d="M420,837 L420,862" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+    <text class="el" x="430" y="852">是</text>
+    <!-- D4 -> success (yes) -->
+    <path d="M420,945 L420,978" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+    <text class="el" x="430" y="965">是</text>
+    <!-- D1 -> FINAL natural (no) -->
+    <path d="M505,366 L753,366" stroke="#8fc06a" stroke-width="2.2" fill="none" marker-end="url(#aG)"/>
+    <text class="el" x="540" y="356">否 · 无 tool_calls</text>
+    <!-- D2 -> limit (yes) -->
+    <path d="M505,580 L753,580" stroke="#d2603a" stroke-width="2.2" fill="none" marker-end="url(#aR)"/>
+    <text class="el" x="560" y="570">是</text>
+    <!-- D3 -> unknown (no) -->
+    <path d="M335,796 L302,796" stroke="#d2603a" stroke-width="2.2" fill="none" marker-end="url(#aR)"/>
+    <text class="el" x="305" y="785">否</text>
+    <!-- D4 -> error (no) -->
+    <path d="M335,904 L302,904" stroke="#d2603a" stroke-width="2.2" fill="none" marker-end="url(#aR)"/>
+    <text class="el" x="305" y="893">否</text>
+    <!-- D0 -> forced (no, iterations exhausted) -->
+    <path d="M505,150 L1095,150 L1095,1158 L734,1158" stroke="#d2603a" stroke-width="2.2" fill="none" marker-end="url(#aR)"/>
+    <text class="el" x="540" y="140">否 · iteration ≥ 5</text>
+    <!-- limit -> forced (break) -->
+    <path d="M905,611 L905,1158 L734,1158" stroke="#d2603a" stroke-width="2.2" fill="none" marker-end="url(#aR)"/>
+    <text class="el" x="913" y="650">break</text>
+    <!-- forcedPrep -> FINAL forced -->
+    <path d="M420,1187 L420,1235" stroke="#d87408" stroke-width="2.2" fill="none" marker-end="url(#aA)"/>
+
+    <!-- LOOPBACK bus (cream dashed) -->
+    <path d="M260,1008 L24,1008 L24,150 L333,150" stroke="#ffdca5" stroke-width="2" fill="none" stroke-dasharray="7 5" marker-end="url(#aC)"/>
+    <path d="M50,796 L24,796" stroke="#ffdca5" stroke-width="2" fill="none" stroke-dasharray="7 5"/>
+    <path d="M50,904 L24,904" stroke="#ffdca5" stroke-width="2" fill="none" stroke-dasharray="7 5"/>
+    <text class="el" x="34" y="430" transform="rotate(-90 34,430)" fill="#ffdca5">↻ 工具结果回填模型 · 进入下一轮 (Observe)</text>
+
+    <!-- ===== NODES ===== -->
+    <!-- START -->
+    <rect x="140" y="22" width="560" height="48" rx="24" fill="#241608" stroke="#ffdca5" stroke-width="2"/>
+    <text class="nt" x="420" y="42" text-anchor="middle">▶ runAgent({ messages, model, tools })</text>
+    <text class="nc" x="420" y="59" text-anchor="middle">init · step=0 · toolSteps=[] · limitHit=false · working=[...messages]</text>
+
+    <!-- D0 -->
+    <polygon points="420,110 505,150 420,190 335,150" fill="#2e1d0c" stroke="#d87408" stroke-width="2"/>
+    <text class="dt" x="420" y="146" text-anchor="middle">iteration</text>
+    <text class="dt" x="420" y="161" text-anchor="middle">&lt; 5 ?</text>
+
+    <!-- callModel -->
+    <rect x="260" y="228" width="320" height="56" rx="9" fill="#241608" stroke="#d87408" stroke-width="2"/>
+    <text class="nt" x="420" y="251" text-anchor="middle">Reason · callModel(working, tools)</text>
+    <text class="nc" x="420" y="269" text-anchor="middle">→ response { content, toolCalls, message }</text>
+
+    <!-- D1 -->
+    <polygon points="420,326 505,366 420,406 335,366" fill="#2e1d0c" stroke="#d87408" stroke-width="2"/>
+    <text class="dt" x="420" y="362" text-anchor="middle">toolCalls</text>
+    <text class="dt" x="420" y="377" text-anchor="middle">&gt; 0 ?</text>
+
+    <!-- echo -->
+    <rect x="260" y="446" width="320" height="52" rx="9" fill="#241608" stroke="#d87408" stroke-width="2"/>
+    <text class="nt" x="420" y="468" text-anchor="middle">回填 assistant 消息</text>
+    <text class="nc" x="420" y="485" text-anchor="middle">working.push(message · 携带 tool_calls)</text>
+
+    <!-- D2 -->
+    <polygon points="420,540 505,580 420,620 335,580" fill="#2e1d0c" stroke="#d2603a" stroke-width="2"/>
+    <text class="dt" x="420" y="576" text-anchor="middle" fill="#d2603a">step ≥ 8 ?</text>
+    <text class="nc" x="420" y="591" text-anchor="middle">maxToolSteps</text>
+
+    <!-- stepStart -->
+    <rect x="260" y="660" width="320" height="56" rx="9" fill="#241608" stroke="#d87408" stroke-width="2"/>
+    <text class="nt" x="420" y="683" text-anchor="middle">Act · step++ · emit tool_start</text>
+    <text class="nc" x="420" y="701" text-anchor="middle">tool = getTool(name) · parseToolArgs()</text>
+
+    <!-- D3 -->
+    <polygon points="420,756 505,796 420,836 335,796" fill="#2e1d0c" stroke="#d87408" stroke-width="2"/>
+    <text class="dt" x="420" y="800" text-anchor="middle">tool 存在 ?</text>
+
+    <!-- D4 -->
+    <polygon points="420,864 505,904 420,944 335,904" fill="#2e1d0c" stroke="#d87408" stroke-width="2"/>
+    <text class="dt" x="420" y="900" text-anchor="middle">tool.run(args,</text>
+    <text class="dt" x="420" y="915" text-anchor="middle">ctx) 成功 ?</text>
+
+    <!-- success -->
+    <rect x="260" y="980" width="320" height="56" rx="9" fill="#152012" stroke="#8fc06a" stroke-width="2"/>
+    <text class="nt" x="420" y="1003" text-anchor="middle" fill="#cfe9b6">completed · emit tool_result</text>
+    <text class="nc" x="420" y="1021" text-anchor="middle">push(result) · 记 durationMs</text>
+
+    <!-- FINAL natural -->
+    <rect x="755" y="334" width="300" height="64" rx="24" fill="#152012" stroke="#8fc06a" stroke-width="2"/>
+    <text class="nt" x="905" y="361" text-anchor="middle" fill="#cfe9b6">■ FINAL · 自然结束</text>
+    <text class="nc" x="905" y="380" text-anchor="middle">truncated = false</text>
+
+    <!-- limit node -->
+    <rect x="755" y="550" width="300" height="60" rx="9" fill="#34160d" stroke="#d2603a" stroke-width="2"/>
+    <text class="nt" x="905" y="574" text-anchor="middle" fill="#eaa489">limitHit = true</text>
+    <text class="nc" x="905" y="592" text-anchor="middle">push ERROR(未执行) · break</text>
+
+    <!-- unknown node -->
+    <rect x="50" y="768" width="250" height="56" rx="9" fill="#34160d" stroke="#d2603a" stroke-width="2"/>
+    <text class="nt" x="175" y="791" text-anchor="middle" fill="#eaa489">emit tool_error</text>
+    <text class="nc" x="175" y="809" text-anchor="middle">未知工具 · push ERROR</text>
+
+    <!-- error node -->
+    <rect x="50" y="874" width="250" height="60" rx="9" fill="#34160d" stroke="#d2603a" stroke-width="2"/>
+    <text class="nt" x="175" y="898" text-anchor="middle" fill="#eaa489">status=error · tool_error</text>
+    <text class="nc" x="175" y="916" text-anchor="middle">push ERROR · 可恢复重试</text>
+
+    <!-- forcedPrep -->
+    <rect x="110" y="1130" width="620" height="56" rx="9" fill="#241608" stroke="#d2603a" stroke-width="2"/>
+    <text class="nt" x="420" y="1153" text-anchor="middle">reason = limitHit ? "tool_step_limit" : "iteration_limit"</text>
+    <text class="nc" x="420" y="1171" text-anchor="middle">push「停止调用工具」· callModel(working, tools = null)</text>
+
+    <!-- FINAL forced -->
+    <rect x="180" y="1237" width="480" height="50" rx="24" fill="#34160d" stroke="#d2603a" stroke-width="2"/>
+    <text class="nt" x="420" y="1267" text-anchor="middle" fill="#eaa489">■ FINAL · 强制收束 · truncated = true</text>
+  </svg>
+  </div>
+
+  <div class="legend">
+    <span><i style="border-color:#d87408"></i>主控制流</span>
+    <span><i style="border-color:#8fc06a"></i>自然结束</span>
+    <span><i style="border-color:#d2603a"></i>上限 / 错误分支</span>
+    <span><i style="border-color:#ffdca5;border-top-style:dashed"></i>结果回填环 (Observe → Reason)</span>
+  </div>
+
+  <div class="panels">
+    <div class="card">
+      <h3>三种终止条件</h3>
+      <table>
+        <tr><th>路径</th><th>触发</th><th>truncatedReason</th></tr>
+        <tr><td><span class="tag pill-ok">自然结束</span></td><td>模型本轮不再请求工具</td><td><code>null</code></td></tr>
+        <tr><td><span class="tag pill-red">迭代上限</span></td><td>循环跑满 5 轮仍未收束</td><td><code>iteration_limit</code></td></tr>
+        <tr><td><span class="tag pill-red">步骤上限</span></td><td>累计工具执行 ≥ 8 步</td><td><code>tool_step_limit</code></td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>NDJSON 事件流 (yield)</h3>
+      <ul>
+        <li><span class="k">tool_start</span> step · tool · args</li>
+        <li><span class="k">tool_result</span> step · tool · result · durationMs</li>
+        <li><span class="k">tool_error</span> step · tool · error · durationMs</li>
+        <li><span class="k">final</span> content · toolSteps · stepCount · truncated · truncatedReason</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>统一 tool-step 契约</h3>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:8px">流事件 / 最终响应 / 前端 state / IndexedDB 四处共用同一形状</p>
+      <ul>
+        <li><span class="k">step</span> 第几步 (1..8)</li>
+        <li><span class="k">tool</span> 工具名</li>
+        <li><span class="k">status</span> running · completed · error</li>
+        <li><span class="k">args / result / error</span> 入参 · 结果 · 错误</li>
+        <li><span class="k">durationMs</span> 耗时</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>设计要点</h3>
+      <ul>
+        <li><span class="k">协议回填</span> 先 push 带 tool_calls 的 assistant 消息，再按序追加每个 tool 结果，符合 OpenAI 函数调用协议</li>
+        <li><span class="k">错误不崩溃</span> 未知工具 / 抛错都转成 ERROR 文本回填，模型可换策略恢复</li>
+        <li><span class="k">双重限流</span> iteration(轮) 与 toolSteps(步) 各自封顶，超限强制 tools=null 出最终答案</li>
+        <li><span class="k">可测试</span> callModel 由调用方注入，executor 与传输/厂商解耦，便于 Mock 单测</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

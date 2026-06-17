@@ -1,0 +1,985 @@
+﻿user_id,username,email,age,phone,gender,register_date,status,balance,country_code,test_category,target_field,expected_result,test_note
+6874728,tom9105,tom9105@example.com,82,19011510594,M,2023-01-11,active,44712.66,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+4394598,sara1328,sara1328@corp.net,76,13096269029,Other,2020-06-20,active,7579.36,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8208941,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,,CN,abnormal,balance,reject,balance 为空
+2081096,validuser,validuser@example.com,30,13800138000,M,2099-01-01,active,1000.00,CN,abnormal,register_date,reject,register_date 远期未来
+1653648,eva3492,eva3492@corp.net,41,14789444911,F,2022-03-23,active,16131.87,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6136983,validuser,validuser@example.com,30,13800138000,M,15-06-2023,active,1000.00,CN,abnormal,register_date,reject,register_date 顺序错误
+3355209,wang6520,wang6520@example.com,38,14409492345,M,2019-09-30,active,24939.36,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+1358875,amy2968,amy2968@demo.io,49,14432415698,F,2024-02-05,active,34455.97,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5332174,li3105,li3105@demo.io,18,16887418355,F,2020-09-28,active,31471.33,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+120785,amy7912,amy7912@test.org,72,16556244818,Other,2019-01-21,active,12698.93,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+656271,mary4650,mary4650@example.com,37,14126450866,M,2020-02-24,active,12019.73,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9573324,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,cn,abnormal,country_code,reject,country_code 小写
+9980300,tom6414,tom6414@example.com,30,17135300174,F,2022-05-11,inactive,4997.83,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7350516,omar5603,omar5603@demo.io,26,13927511114,M,2025-12-31,pending,34165.28,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+687671,validuser,validuser@example.com,30,1900000000,M,2023-06-15,active,1000.00,CN,boundary,phone,reject,phone 仅 10 位
+5135094,validuser,validuser@example.com,30,+8613800138000,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 带国家码前缀
+7196589,sato4037,sato4037@example.com,87,15241542401,F,2024-05-17,active,45647.03,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9053435,zoe2072,zoe2072@corp.net,61,17436352344,F,2023-03-11,inactive,37492.87,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2511228,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,-0.01,CN,boundary,balance,reject,balance 刚跨过 0 变负
+8588205,john7185,john7185@demo.io,71,13598799460,M,2024-09-30,active,22895.42,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+5532941,omar7229,omar7229@demo.io,25,13926992879,F,2024-12-05,active,42816.26,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2782147,validuser,validuser@example.com,30,13800138000,M,2026-06-03,active,1000.00,CN,boundary,register_date,accept,register_date 等于今天(上界)
+2753940,ken701,ken701@test.org,37,14641887329,M,2025-05-13,inactive,37748.47,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3068351,mary7382,mary7382@corp.net,64,18518246945,M,2020-10-09,inactive,20631.10,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+2955822,zhao9171,zhao9171@mail.cn,90,14482054963,F,2019-04-26,active,15561.08,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+217607,raj2301,raj2301@test.org,44,15738753424,F,2024-02-23,active,45572.71,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6380409,sara2244,sara2244@mail.cn,38,14733209522,M,2019-08-16,active,47753.93,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+7261208,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,0.01,CN,boundary,balance,accept,balance 最小正向精度 0.01
+3535026,raj7566,raj7566@corp.net,35,18435177211,M,2018-04-20,active,16406.89,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+2324835,ken6126,ken6126@mail.cn,56,17983840245,F,2022-03-27,active,11946.34,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8787136,chen2185,chen2185@test.org,40,18423137280,M,2023-11-15,active,26157.28,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5777253,用户名中文,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 含非允许字符(中文)
+910664,john8066,john8066@example.com,37,18717276195,M,2019-10-21,active,9492.87,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+7161820,sara5850,sara5850@demo.io,54,17232566326,Other,2019-09-12,inactive,16876.24,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5204490,ken8792,ken8792@corp.net,90,17769553594,M,2022-06-28,active,29606.89,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+8175720,tom9986,tom9986@corp.net,54,18774133116,M,2020-04-12,active,45556.35,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4654015,john5475,john5475@corp.net,69,14396962025,M,2021-05-27,active,17316.87,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+7715994,wang4361,wang4361@test.org,26,18312853289,M,2024-08-01,inactive,40269.74,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4248307,ivan7300,ivan7300@demo.io,40,16273463783,F,2019-01-01,inactive,42679.52,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5440816,kim5447,kim5447@test.org,18,19712250977,F,2018-02-21,active,3153.31,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6248696,   ,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 全空格
+5533368,alex9184,alex9184@demo.io,37,18418170715,M,2019-05-08,banned,19610.31,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+7030844,leo2390,leo2390@mail.cn,37,15614638367,M,2022-01-30,pending,49414.58,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+2226356,li1130,li1130@demo.io,55,16888727225,F,2018-02-12,active,4274.20,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+5406712,alex3566,alex3566@mail.cn,24,17580398525,F,2019-03-23,active,8892.61,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6609970,sato4455,sato4455@demo.io,20,19256130872,M,2020-04-28,active,18533.65,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+85198,ken2780,ken2780@mail.cn,33,13696350881,M,2025-05-29,active,30392.76,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+5755257,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,abc,CN,abnormal,balance,reject,balance 非数字
+271589,nina5526,nina5526@corp.net,68,19810973593,F,2021-11-12,active,21213.39,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+1031651,lucy8692,lucy8692@mail.cn,68,16856450136,M,2019-05-16,active,17751.36,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+6259559,lucy7796,lucy7796@demo.io,50,14584704450,Other,2025-07-08,pending,1753.29,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+6592276,mary9075,mary9075@corp.net,83,13646824140,F,2022-11-28,active,1439.53,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+4752609,lily4316,lily4316@corp.net,21,18731878825,F,2024-01-16,active,42335.63,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+9728172,wang2658,wang2658@demo.io,66,19661799301,M,2021-08-22,active,47939.49,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+5862771,john5621,john5621@test.org,41,18701842152,M,2020-10-03,active,31601.59,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2437667,zhao9608,zhao9608@mail.cn,20,18110016066,M,2023-06-15,active,45302.35,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3275087,li7540,li7540@example.com,67,16463926000,F,2026-02-16,active,37916.48,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7194294,max6584,max6584@test.org,86,13061648523,M,2024-01-23,inactive,27661.12,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7653252,yuki8698,yuki8698@test.org,65,16458258113,F,2021-11-18,banned,41558.71,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4304566,mary637,mary637@test.org,57,18477225888,M,2019-06-11,pending,21456.76,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8433260,chen5249,chen5249@demo.io,71,19988471229,M,2019-11-30,active,22475.05,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7729605,mary6243,mary6243@demo.io,23,17797225114,F,2023-09-18,inactive,10207.82,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8249409,chen1362,chen1362@demo.io,18,18835248957,Other,2026-04-18,active,45389.15,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6790201,eva208,eva208@corp.net,65,17173914824,F,2020-05-03,active,12292.96,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+5947711,zhao7758,zhao7758@demo.io,61,17410873358,F,2021-11-13,active,1420.75,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1358275,yuki3487,yuki3487@corp.net,36,14288744860,F,2026-01-10,active,8109.85,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4111760,amy406,amy406@mail.cn,66,19460641493,M,2025-01-06,active,3016.47,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+1466172,alex8979,alex8979@corp.net,35,14241730538,M,2026-04-22,active,12254.69,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+479659,validuser,validuser@example.com,121,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,reject,age 121 超过上界
+2031905,zhao9153,zhao9153@corp.net,49,18079000058,F,2020-03-23,pending,3083.02,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5888009,wang4134,wang4134@corp.net,29,16668331714,M,2022-08-31,active,49000.40,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+3506580,kim623,kim623@test.org,31,15423484124,F,2020-01-21,active,3121.08,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1756045,   ,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 全空格
+946703,zoe1689,zoe1689@corp.net,19,16754509922,F,2021-11-15,pending,42456.23,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+6562948,yuki4109,yuki4109@corp.net,22,16734079308,M,2023-03-08,active,46978.85,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4618170,lily5026,lily5026@corp.net,74,19615367931,F,2025-07-05,active,10854.33,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9649652,sara7548,sara7548@mail.cn,38,14000220392,F,2019-12-17,active,8860.80,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+7339485,li8308,li8308@corp.net,45,17715668606,Other,2019-09-13,inactive,44334.42,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4364154,ken7561,ken7561@mail.cn,88,19128595606,F,2021-02-04,active,18681.17,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+407649,amy9779,amy9779@mail.cn,81,13833365278,M,2021-04-06,inactive,20306.02,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1480095,lucy3211,lucy3211@mail.cn,76,18977002852,F,2026-01-16,active,13980.27,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+934253,max6783,max6783@example.com,90,15819295133,M,2025-12-29,active,243.63,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1299936,eva6113,eva6113@mail.cn,50,18620689431,F,2024-01-08,active,4549.58,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+5343790,mary9832,mary9832@mail.cn,87,13696744636,F,2022-10-04,active,23519.50,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8665514,ken8627,ken8627@example.com,42,19144566862,F,2018-09-20,inactive,29410.44,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+8494483,lucy6667,lucy6667@test.org,81,13519879410,F,2018-11-22,banned,37413.30,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5699580,validuser,@nolocal.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 缺少本地部分
+6911139,zoe8413,zoe8413@demo.io,43,19608854555,F,2024-05-26,inactive,12180.79,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4382535,li4363,li4363@demo.io,89,19427617471,F,2020-08-21,active,3406.39,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+4819251,max2081,max2081@test.org,73,15469655654,M,2024-09-30,active,42830.95,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4374118,,bad,-1,13800138000,M,2023-06-15,active,-50,CN,abnormal,multiple,reject,多个字段同时非法
+7404542,zhao2022,zhao2022@example.com,70,14443151020,Other,2022-04-03,active,44290.30,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7513019,eva3565,eva3565@example.com,84,18820683149,M,2023-03-30,active,31042.69,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2375590,ken3080,ken3080@corp.net,60,17747068896,F,2026-03-31,active,32743.30,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+4001461,sato1042,sato1042@mail.cn,84,15034780124,F,2018-08-23,active,8090.67,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+4919758,lucy9975,lucy9975@demo.io,36,14079310171,M,2024-01-21,active,40858.07,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6916607,tom5203,tom5203@demo.io,54,14131308363,M,2024-09-06,active,32131.14,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6745128,zhao153,zhao153@demo.io,73,16586801444,F,2019-01-23,active,23523.50,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3913463,ken9986,ken9986@example.com,58,13254013214,F,2024-11-30,active,28561.66,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9648801,ivan121,ivan121@test.org,48,14495918674,F,2025-08-24,inactive,32793.20,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5467507,validuser,validuser@example.com,30,1380013800a,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 含字母
+3285350,ken9357,ken9357@example.com,63,18591865171,M,2022-04-28,active,44346.25,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+3414219,mary789,mary789@example.com,74,15398937134,F,2023-03-05,active,27695.54,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8497317,chen1997,chen1997@mail.cn,40,13808353250,M,2021-10-10,active,16164.67,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+1758093,validuser,validuser@example.com,30,190000000000,M,2023-06-15,active,1000.00,CN,boundary,phone,reject,phone 多达 12 位
+3956209,amy2908,amy2908@test.org,48,14892322702,F,2021-05-08,active,10690.06,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1912791,eva3382,eva3382@example.com,86,16681912955,M,2021-06-03,active,19915.46,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+4718884,chen767,chen767@corp.net,73,18130899717,M,2025-11-13,pending,32379.40,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8376495,lily6439,lily6439@example.com,22,19327510294,F,2019-08-30,active,482.68,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1475242,alex8064,alex8064@mail.cn,26,15912035258,M,2021-11-13,active,45791.22,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9548314,validuser,validuser@example.com,25.5,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 为小数
+5809535,omar9462,omar9462@corp.net,32,14186962310,M,2023-05-27,pending,45552.39,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+6907727,max7364,max7364@mail.cn,42,18665712902,M,2023-02-12,active,24467.54,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4117282,ken6510,ken6510@corp.net,31,17567592128,F,2026-02-21,active,26692.08,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+4306948,tom1515,tom1515@test.org,41,19695739308,F,2020-09-24,active,12948.05,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3284016,user@#$%,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 含特殊符号
+1307256,ken5421,ken5421@example.com,55,19335369475,M,2021-09-22,banned,6499.24,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+685530,max9103,max9103@demo.io,57,17796882228,F,2020-04-20,active,29572.29,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3785180,sato9320,sato9320@demo.io,58,14100551959,F,2024-10-06,active,5772.75,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4596213,sara2924,sara2924@corp.net,67,13104908825,M,2019-09-07,active,27365.02,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1835737,tom7234,tom7234@example.com,52,19397796354,F,2024-05-17,inactive,26788.33,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9581172,leo183,leo183@mail.cn,55,18117907640,M,2018-02-12,active,32373.81,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+330861,leo6071,leo6071@test.org,64,19166891044,M,2023-10-05,active,17075.10,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+2108329,john713,john713@example.com,76,18246405398,F,2022-03-13,active,36961.46,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9890114,tom4183,tom4183@corp.net,50,13046397109,M,2021-07-11,active,49256.90,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9395227,amy3830,amy3830@mail.cn,59,18733015035,M,2024-07-03,active,37440.16,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+2019164,用户名中文,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 含非允许字符(中文)
+8763905,validuser,validuser@example.com,30,190000000000,M,2023-06-15,active,1000.00,CN,boundary,phone,reject,phone 多达 12 位
+7640331,ken8656,ken8656@example.com,59,18273207528,F,2025-02-06,active,31707.05,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3918653,alex368,alex368@example.com,52,15873535967,F,2020-02-05,active,1583.12,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+3061557,alex6693,alex6693@mail.cn,56,16151579522,M,2021-10-20,pending,31227.34,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7610804,validuser,validuser@example.com,30,138-0013-8000,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 含分隔符
+2120045,validuser,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,email,accept,email 本地部分 64 字符上界
+2841021,lucy625,lucy625@test.org,54,19222135354,M,2020-02-03,active,6437.06,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+81423,lucy6665,lucy6665@mail.cn,86,15579278481,M,2025-03-06,active,37634.62,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2257428,leo7131,leo7131@test.org,29,15983745106,F,2022-09-16,active,12772.00,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5197789,validuser,validuser@example.com,30,13800138000,M,2023-13-01,active,1000.00,CN,abnormal,register_date,reject,register_date 月份越界
+3918833,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,0.00,CN,boundary,balance,accept,balance 最小值 0.00
+1469384,yuki5204,yuki5204@demo.io,29,13538439756,F,2021-08-01,active,9733.69,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8825474,max8744,max8744@corp.net,69,13934667997,M,2019-08-09,inactive,12919.60,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+9915808,sara9732,sara9732@test.org,46,14087937170,F,2022-06-15,active,11223.29,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3420411,nina6495,nina6495@test.org,19,13036140175,M,2022-01-01,pending,18235.59,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3259036,validuser,validuser@example.com,30,13800138000,M,2023-06-15,ACTIVE,1000.00,CN,abnormal,status,reject,status 大小写不符枚举
+3985781,max9489,max9489@test.org,31,13007943197,M,2020-06-16,active,24297.02,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2060983,omar8749,omar8749@demo.io,68,14922972348,M,2021-04-02,pending,22187.91,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3238940,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,,abnormal,country_code,reject,country_code 为空
+497314,raj3507,raj3507@example.com,25,17766258872,M,2020-03-06,pending,17065.50,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3708428,validuser,validuser@example.com,30,13800138000,M,2023/06/15,active,1000.00,CN,abnormal,register_date,reject,register_date 分隔符错误
+1248075,tom3204,tom3204@demo.io,35,15864570534,M,2022-08-08,inactive,2083.52,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3618478,john2062,john2062@corp.net,82,17184926529,F,2018-11-04,active,36650.99,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7896301,wang7411,wang7411@mail.cn,43,17893458743,M,2023-02-18,active,10590.15,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1634049,alex5848,alex5848@example.com,67,14677318128,F,2021-03-06,inactive,27233.30,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3903080,chen9645,chen9645@test.org,24,17463368908,M,2023-02-28,active,33626.32,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7273677,omar8815,omar8815@test.org,56,16378509622,M,2020-11-14,active,31960.09,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3256270,mary3793,mary3793@demo.io,45,14653353175,M,2019-03-18,active,44006.62,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8351350,max6758,max6758@example.com,50,17617804664,M,2021-01-22,active,36819.77,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7655255,lily4618,lily4618@example.com,70,13923294433,M,2018-07-18,active,48445.69,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+393164,ken5774,ken5774@corp.net,65,16269012356,F,2025-02-04,active,31113.24,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+5400387,ivan4806,ivan4806@example.com,90,13741525321,F,2019-02-17,active,28263.64,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+3350616,max244,max244@demo.io,54,19644803462,F,2025-01-28,active,18461.02,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+2557702,sara4604,sara4604@corp.net,26,15144650393,F,2019-10-14,active,23404.14,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+5344302,ken2777,ken2777@example.com,56,17689790915,M,2025-12-21,active,44211.33,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7917891,alex4921,alex4921@corp.net,29,15137093305,M,2026-02-03,active,27097.59,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9076419,zoe6253,zoe6253@mail.cn,52,15042868009,F,2018-09-06,inactive,46153.42,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9721959,<script>alert(1)</script>,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username XSS 脚本
+5089607,raj7504,raj7504@example.com,22,13781205166,M,2018-10-02,active,33877.50,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+4224750,ivan9567,ivan9567@mail.cn,53,16559273785,F,2021-04-29,banned,18994.40,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3462,max2967,max2967@corp.net,23,13798995837,F,2019-01-28,active,33194.29,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8718301,leo7941,leo7941@example.com,41,13419811197,F,2023-01-21,active,46250.73,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1517074,ivan3731,ivan3731@corp.net,67,16438718168,F,2023-04-27,active,36325.86,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6818714,wang9898,wang9898@demo.io,90,19569136996,M,2024-04-03,active,22103.09,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+3010676,amy1284,amy1284@mail.cn,79,19026068696,F,2023-02-11,active,17619.96,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9042720,zhao5829,zhao5829@example.com,18,15300210646,M,2020-02-01,active,5765.27,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3274607,validuser,@nolocal.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 缺少本地部分
+939928,validuser,validuser@example.com,30,13800138000,M,2023-06-15,,1000.00,CN,abnormal,status,reject,status 为空
+5281385,alex5133,alex5133@demo.io,82,17549472224,F,2022-02-06,active,45925.19,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9643087,'; DROP TABLE users;--,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username SQL 注入串
+5634319,chen2792,chen2792@test.org,50,14401374988,M,2020-08-22,active,742.88,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+7024923,zoe4082,zoe4082@example.com,55,17818344031,F,2025-03-11,inactive,6194.13,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9817088,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1e3,CN,abnormal,balance,reject,balance 科学计数法
+7264549,wang1637,wang1637@mail.cn,38,15610745814,M,2024-03-11,active,46987.58,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1135678,ken8831,ken8831@test.org,83,19016179822,M,2021-11-16,active,36962.85,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+2526723,validuser,a@b.co,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,email,accept,email 极短但合法
+214862,kim2548,kim2548@demo.io,46,18482546886,M,2019-06-04,active,23183.34,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4388635,li6147,li6147@mail.cn,35,17624216615,F,2024-10-28,active,16708.15,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+5246350,yuki2993,yuki2993@example.com,53,16393669953,F,2018-05-14,active,13874.55,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5704302,lily5703,lily5703@test.org,22,18484423925,M,2022-01-08,active,22677.41,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+699390,lucy9655,lucy9655@mail.cn,52,17112095626,F,2023-10-26,active,47828.67,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+3887907,li2112,li2112@demo.io,62,16198577205,M,2020-02-18,banned,18868.73,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2223687,ken7359,ken7359@example.com,35,18176904717,M,2021-12-08,active,28037.66,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3298330,bad name,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 含空格
+938840,mary1606,mary1606@test.org,77,19011537454,M,2020-05-25,active,36459.31,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+895238,sara7463,sara7463@test.org,35,14136826199,F,2025-03-16,pending,46828.55,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8596180,eva4034,eva4034@mail.cn,72,13282016920,F,2021-10-21,pending,21409.45,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4114098,ken1558,ken1558@test.org,19,17786036080,F,2020-06-20,active,1186.39,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5355679,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,0.00,CN,boundary,balance,accept,balance 最小值 0.00
+9944012,validuser,validuser@example.com,30,13800138000,M,2099-01-01,active,1000.00,CN,abnormal,register_date,reject,register_date 远期未来
+2716439,lucy2272,lucy2272@example.com,42,18862558568,Other,2025-03-04,active,10294.31,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2850765,amy7162,amy7162@example.com,82,18224442595,F,2022-04-09,active,13683.02,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3534647,tom9032,tom9032@mail.cn,51,18759718577,M,2021-02-26,active,41969.36,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+5901708,john6916,john6916@test.org,49,19844319009,F,2023-01-08,active,22440.93,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6397414,sato4307,sato4307@example.com,84,13261372376,F,2021-02-10,active,28456.97,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6564975,sara4712,sara4712@example.com,22,16594896828,F,2021-02-16,pending,40756.39,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1436301,sara4223,sara4223@corp.net,64,17385668836,F,2020-08-11,active,30948.33,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5675675,li2501,li2501@test.org,28,14431209302,F,2024-03-31,active,42215.13,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8415022,sara7963,sara7963@corp.net,78,16942578572,M,2021-02-06,inactive,14770.55,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4692126,validuser,validuser@example.com,30,1380013800a,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 含字母
+2537089,lucy1220,lucy1220@test.org,60,19935210621,M,2026-04-08,active,48064.11,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2192137,,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 为空
+9296316,max508,max508@mail.cn,58,14284608273,M,2020-11-23,active,24704.21,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4153049,tom9993,tom9993@demo.io,23,19938827907,M,2024-09-30,active,19648.21,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8938599,max4827,max4827@example.com,86,14773558971,F,2020-03-12,inactive,20746.58,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+599297,zhao4230,zhao4230@mail.cn,22,19788614623,M,2021-07-31,active,22350.46,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4599064,lily830,lily830@corp.net,46,17790910617,M,2025-09-11,inactive,17639.65,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7697882,validuser,validuser@example.com,30,13800138000,1,2023-06-15,active,1000.00,CN,abnormal,gender,reject,gender 用数字表示
+7658683,alex7262,alex7262@demo.io,32,18642393540,M,2024-11-15,active,44436.16,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9861328,nina2829,nina2829@example.com,55,14421031000,M,2020-01-03,active,3414.37,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7467500,raj2442,raj2442@test.org,38,17432561896,F,2021-06-17,active,18720.39,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+867504,lucy4836,lucy4836@demo.io,62,14848637489,F,2024-02-02,active,26667.77,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9673330,lucy4418,lucy4418@example.com,36,13278224477,M,2019-11-21,active,5190.80,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2955352,ken8394,ken8394@test.org,47,19458865643,M,2020-04-28,active,25420.57,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5365855,"a,b""c
+d",validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 含逗号引号换行(CSV 转义)
+7702496,raj9868,raj9868@example.com,58,19117569059,M,2020-07-09,active,2043.48,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2257882,john9994,john9994@test.org,55,19711563335,F,2025-10-11,active,8647.76,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3331624,lucy4713,lucy4713@test.org,23,15320591945,F,2024-08-24,inactive,26643.06,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8933557,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,0.00,CN,boundary,balance,accept,balance 最小值 0.00
+2368225,leo7444,leo7444@test.org,65,14435685973,F,2022-10-17,active,43472.96,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+419389,amy1923,amy1923@example.com,40,16086396553,M,2023-09-23,pending,29308.27,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1229670,eva7064,eva7064@example.com,32,15481170442,M,2024-10-28,active,38589.61,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9132323,li3024,li3024@mail.cn,78,14059678795,M,2018-03-17,active,26493.94,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6601487,li2026,li2026@corp.net,54,18992246883,F,2020-06-08,active,7161.91,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+3429591,raj3132,raj3132@test.org,22,18401059460,F,2020-02-02,active,5992.67,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8228405,validuser,validuser@example.com,17,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,reject,age 17 低于下界
+4299855,eva3791,eva3791@demo.io,25,13046543422,F,2020-03-25,active,10543.23,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+6632447,wang5039,wang5039@example.com,47,18468478931,M,2023-08-02,active,21141.06,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7608512,mary373,mary373@corp.net,23,19110442009,M,2022-10-22,pending,40911.38,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3023024,mary767,mary767@corp.net,51,13693307532,F,2022-02-28,inactive,46766.78,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7695474,yuki5037,yuki5037@example.com,54,14523811642,M,2018-09-09,inactive,31613.88,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7387371,alex7262,alex7262@example.com,68,16674819119,M,2019-12-08,active,38073.83,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+9509270,validuser,validuser@example.com,30,13800138000,M,2023-06-15,deleted,1000.00,CN,abnormal,status,reject,status 非法枚举值
+1,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,user_id,accept,user_id 最小有效值 1
+4354428,nina9394,nina9394@example.com,67,14532588434,F,2022-11-07,active,15060.63,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6003901,chen3927,chen3927@test.org,20,16843119533,M,2022-08-04,pending,49103.66,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9445440,ken337,ken337@corp.net,75,16197650779,M,2019-03-05,pending,30474.43,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9706491,kim3755,kim3755@test.org,55,13313990664,F,2023-05-07,active,28136.16,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3044238,tom2551,tom2551@example.com,74,17053976521,F,2024-10-10,inactive,4756.23,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3234599,validuser,validuser@example.com,30,,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 为空
+3886778,mary193,mary193@mail.cn,72,18878585833,F,2023-11-02,active,23358.81,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+9095385,validuser,validuser@example.com,30,13800138000,,2023-06-15,active,1000.00,CN,abnormal,gender,reject,gender 为空
+1490115,raj8667,raj8667@mail.cn,38,13856048025,F,2021-06-02,active,26983.22,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4450099,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,-0.01,CN,boundary,balance,reject,balance 刚跨过 0 变负
+7045999,nina487,nina487@demo.io,34,16509175329,M,2019-08-17,inactive,41380.93,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3937629,john3665,john3665@demo.io,74,15148815567,M,2018-08-21,inactive,49041.37,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1510050,amy1266,amy1266@mail.cn,86,15259771978,M,2023-10-13,active,49945.64,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8184096,omar6911,omar6911@demo.io,68,19727801959,M,2018-01-02,active,39708.21,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7214271,alex8517,alex8517@corp.net,41,18339682585,M,2025-12-08,active,25379.42,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+529111,omar4822,omar4822@corp.net,59,19423761830,M,2024-09-30,active,24074.33,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+3929132,chen5642,chen5642@demo.io,23,13962680344,M,2024-01-23,active,35288.32,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+2869703,sato2286,sato2286@corp.net,22,16640369905,M,2023-06-30,active,20088.25,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9832602,nina4412,nina4412@example.com,39,17651719344,F,2023-04-06,active,26964.40,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+4510765,eva2050,eva2050@test.org,41,15236930460,M,2025-02-27,banned,20014.90,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1940907,john3368,john3368@test.org,56,16824572604,F,2025-08-17,active,17024.21,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9645248,sato9272,sato9272@test.org,56,19048776695,F,2025-10-11,inactive,29988.96,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4127425,ivan3987,ivan3987@example.com,61,16472135896,F,2018-11-13,active,25596.79,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1349229,max67,max67@corp.net,30,15562384253,F,2026-05-08,inactive,149.58,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+6436564,lucy9970,lucy9970@example.com,87,18858396600,M,2021-11-11,active,2168.53,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6531074,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 与已有记录重复
+6531074,lucy9395,lucy9395@test.org,66,18824705153,F,2025-12-10,banned,16151.48,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6617541,sara8552,sara8552@corp.net,79,17261930824,M,2023-06-02,active,8863.05,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9505783,amy8870,amy8870@demo.io,54,13287089870,F,2019-05-04,active,4596.69,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1991987,mary3844,mary3844@mail.cn,19,16424589664,F,2025-03-17,active,47786.50,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+396680,tom4517,tom4517@corp.net,47,13213828704,M,2024-03-30,banned,23511.44,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2118285,amy846,amy846@test.org,77,17730188789,F,2019-06-20,active,25420.11,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3885007,zoe8778,zoe8778@corp.net,74,18042123920,M,2023-05-14,active,36145.28,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9223372036854775807,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,user_id,accept,user_id 64 位整型上界
+5768526,lucy6840,lucy6840@corp.net,66,15067996611,F,2024-09-12,active,8192.55,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1714884,kim4942,kim4942@mail.cn,42,15272857572,M,2021-01-25,pending,13340.38,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7794459,nina1132,nina1132@mail.cn,45,14219614224,M,2019-04-15,active,1690.39,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1841954,john9046,john9046@example.com,34,13684660860,M,2026-05-18,active,36065.46,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+4453623,sara8078,sara8078@example.com,57,14492016965,F,2021-07-12,active,22894.57,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9268589,chen9506,chen9506@corp.net,86,17820416834,M,2022-08-16,active,48471.62,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8605614,amy6295,amy6295@example.com,31,17045492255,M,2020-01-27,active,148.12,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3031187,kim6609,kim6609@test.org,20,13502619078,M,2025-05-04,inactive,13412.72,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3855325,kim9964,kim9964@demo.io,34,13240029919,F,2018-01-05,inactive,36731.07,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+1240637,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,1,abnormal,country_code,reject,country_code 数字
+3263004,wang4414,wang4414@example.com,65,16989003119,M,2018-08-07,active,7383.98,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3918231,mary3568,mary3568@corp.net,28,14931355982,F,2022-10-28,active,44101.51,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4908630,sato6463,sato6463@example.com,23,17139727588,M,2022-01-15,active,14023.34,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+4464360,validuser,two@@at.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 双 @
+6059720,john9095,john9095@corp.net,85,18531482647,M,2023-03-03,active,14249.93,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+928822,validuser,validuser@example.com,-1,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 负数
+2293726,chen8989,chen8989@corp.net,26,16631504699,M,2018-01-22,inactive,6207.30,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3589879,nina3147,nina3147@example.com,21,13914616554,M,2022-12-28,active,49550.79,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+5253904,mary5079,mary5079@corp.net,79,18613359000,M,2022-02-26,active,4945.56,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8824408,validuser,validuser@example.com,,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 为空
+9964296,john8329,john8329@test.org,32,13217849844,F,2022-02-08,active,3671.58,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7466574,ken7991,ken7991@example.com,57,13202683734,M,2020-05-19,active,8862.57,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7142564,zhao9219,zhao9219@corp.net,90,13748034716,F,2023-10-01,inactive,2284.80,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+2113688,nina7168,nina7168@corp.net,50,19198193410,M,2025-08-16,banned,38714.20,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2491723,ivan8439,ivan8439@demo.io,43,18822714296,F,2023-12-29,active,31259.15,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9198469,mary885,mary885@corp.net,23,14582577827,F,2025-10-02,active,26005.12,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7660287,wang8895,wang8895@corp.net,44,19149632450,M,2019-10-19,active,42832.21,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1256245,raj5013,raj5013@mail.cn,74,13496112910,M,2023-11-07,inactive,7150.81,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1917557,yuki9747,yuki9747@demo.io,89,16053034693,M,2024-08-26,pending,38987.20,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8475180,mary7811,mary7811@example.com,78,14737596406,M,2025-08-02,active,24343.86,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2995534,validuser,two@@at.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 双 @
+7890221,omar8338,omar8338@demo.io,31,16505846004,M,2023-07-08,active,39593.35,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+2514739,ken5053,ken5053@mail.cn,83,16349816207,F,2019-05-01,inactive,2678.73,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+92252,ivan4685,ivan4685@demo.io,84,19687651702,F,2024-08-21,inactive,4854.34,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3437190,validuser,validuser@example.com,30,13800138000,M,2023-06-15,deleted,1000.00,CN,abnormal,status,reject,status 非法枚举值
+8161389,tom3661,tom3661@mail.cn,20,14865699170,M,2022-01-08,active,23290.52,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2859835,zhao7491,zhao7491@mail.cn,63,14934446926,M,2025-11-25,active,29413.29,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8918374,raj984,raj984@mail.cn,50,18297590572,M,2023-06-22,active,21989.37,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3645824,amy4300,amy4300@corp.net,32,15671264352,F,2018-12-26,active,26875.41,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8281457,raj2769,raj2769@corp.net,65,16592752056,M,2023-02-01,active,19908.01,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+7586474,validuser,no@domain,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 缺少顶级域
+6076528,lucy8591,lucy8591@demo.io,38,13714680077,F,2022-10-15,active,15389.05,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+407830,raj3378,raj3378@example.com,24,19054551644,F,2026-04-11,active,3090.49,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3232096,sato4765,sato4765@test.org,88,15409635224,M,2023-09-26,inactive,18372.86,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5790662,mary9075,mary9075@corp.net,71,14925817047,F,2019-03-07,inactive,46318.22,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1331551,zoe1921,zoe1921@demo.io,79,13547061207,F,2021-10-10,active,24343.21,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6383961,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,ZZ,abnormal,country_code,reject,country_code 非法国家码
+8228637,lily8764,lily8764@demo.io,72,13274975860,M,2020-06-22,active,45615.24,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+806034,nina2686,nina2686@demo.io,81,17250448566,F,2023-03-25,active,45911.61,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2815479,eva7993,eva7993@demo.io,22,16776637709,M,2022-11-12,pending,4024.89,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+2709106,nina7264,nina7264@corp.net,83,15697987440,F,2021-07-11,banned,7942.44,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3483569,nina9821,nina9821@corp.net,48,17120692369,F,2025-05-27,active,6386.06,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9772196,omar2257,omar2257@mail.cn,70,18619322787,M,2025-11-25,active,29057.09,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 为空
+2960067,tom5818,tom5818@demo.io,84,14679326282,F,2024-03-20,inactive,25408.23,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8343304,alex598,alex598@example.com,83,18581645112,F,2018-07-21,pending,202.55,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9345933,lucy4854,lucy4854@mail.cn,25,18456996417,F,2023-02-13,active,25907.65,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2049692,omar4976,omar4976@demo.io,35,19099348861,F,2025-01-04,banned,21341.34,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7109582,lucy9774,lucy9774@demo.io,73,19360418048,M,2019-09-22,active,37310.66,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6938361,zoe6273,zoe6273@mail.cn,18,17992020727,F,2023-01-31,active,21767.26,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+7147574,raj4057,raj4057@mail.cn,50,19902531484,M,2019-04-18,inactive,26762.44,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3528391,validuser,space in@mail.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 含空格
+532765,ivan7236,ivan7236@example.com,77,13864855677,M,2022-06-30,active,24681.79,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+935986,kim3190,kim3190@corp.net,30,15997771566,M,2025-11-19,pending,31392.61,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+-5,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 负数
+9556284,kim5859,kim5859@example.com,38,19248845001,F,2021-07-14,pending,9390.24,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1976639,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,"1,000.00",CN,abnormal,balance,reject,balance 含千分位逗号
+1131614,amy5639,amy5639@example.com,36,14638515064,F,2025-02-03,inactive,23780.93,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7591242,leo9662,leo9662@corp.net,41,16914652802,F,2019-04-20,banned,16082.48,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9390206,max9116,max9116@mail.cn,83,13321143210,F,2024-11-24,active,15907.59,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5695988,ken9147,ken9147@example.com,30,13753946054,M,2019-10-07,banned,1249.42,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4374118,,bad,-1,13800138000,M,2023-06-15,active,-50,CN,abnormal,multiple,reject,多个字段同时非法
+65618,wang8378,wang8378@example.com,23,17319278012,M,2025-01-19,inactive,42466.01,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8354060,sara35,sara35@example.com,37,14956009675,F,2023-01-29,pending,46023.80,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9915683,chen9926,chen9926@corp.net,20,15085869064,F,2020-09-06,active,5380.32,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1.5,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 为小数
+8811208,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,100.999,CN,abnormal,balance,reject,balance 超过两位小数
+8831074,john6740,john6740@test.org,45,14302704847,F,2022-02-08,active,10914.57,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+6185657,ivan8318,ivan8318@example.com,28,13313891238,M,2026-03-16,active,32177.79,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+7303971,sato6769,sato6769@corp.net,40,18023296678,M,2019-12-30,active,1631.00,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3419641,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,0.01,CN,boundary,balance,accept,balance 最小正向精度 0.01
+686623,validuser,validuser@example.com,25.5,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 为小数
+7148374,"a,b""c
+d",validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 含逗号引号换行(CSV 转义)
+2856924,ken281,ken281@demo.io,36,14514471370,M,2019-10-03,active,9363.13,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2952268,wang3390,wang3390@test.org,85,15319250738,F,2018-12-15,active,32064.01,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+739491,lily3974,lily3974@corp.net,61,13764430770,M,2020-09-14,active,4031.24,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1261514,ken1854,ken1854@demo.io,38,18720377298,F,2024-07-25,active,14946.41,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7529952,sato1097,sato1097@test.org,19,15307228393,F,2021-05-28,pending,37523.62,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5347217,ivan1383,ivan1383@test.org,82,18613798800,F,2022-06-21,active,7997.33,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2047483,lucy4229,lucy4229@test.org,49,14731407632,M,2023-10-07,active,28658.33,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8918871,wang5761,wang5761@demo.io,75,17911503636,F,2025-01-25,active,291.43,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+302618,omar3467,omar3467@corp.net,85,17327665935,M,2021-09-01,active,17342.00,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2281259,tom438,tom438@test.org,40,14660013025,F,2021-01-27,active,42910.01,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9399883,lucy9905,lucy9905@demo.io,89,15495946026,F,2023-10-07,active,4957.38,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7251077,ivan7077,ivan7077@corp.net,61,19250440862,F,2018-11-21,active,46950.90,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8133538,zhao9343,zhao9343@example.com,42,18325618953,F,2021-12-09,active,37481.55,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3035396,mary1640,mary1640@corp.net,49,18607282089,M,2021-09-13,inactive,40303.88,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7882384,zoe3588,zoe3588@demo.io,41,19305105429,M,2020-08-11,pending,355.93,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+7738641,abc,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,accept,username 最短 3 位
+8020712,max4565,max4565@corp.net,87,13704518980,M,2019-11-17,active,37089.31,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+8386662,li5050,li5050@demo.io,50,16111460216,F,2023-08-16,active,46764.82,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+1692769,validuser,validuser@example.com,30,13800138000,male,2023-06-15,active,1000.00,CN,abnormal,gender,reject,gender 大小写/拼写不符枚举
+6646536,max2301,max2301@demo.io,71,15681758306,F,2019-09-08,inactive,15548.32,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+8585277,chen6453,chen6453@test.org,64,16774166754,M,2018-01-05,inactive,38758.29,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8067936,mary8741,mary8741@test.org,25,13731787864,M,2019-10-04,inactive,43196.97,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4521432,nina3087,nina3087@corp.net,51,16529477818,F,2020-03-02,active,1505.66,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8202308,ken1671,ken1671@example.com,53,14077839463,M,2020-10-05,inactive,48108.49,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4242625,zhao5652,zhao5652@example.com,61,14673160613,F,2019-04-15,active,29927.50,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+487012,john1918,john1918@mail.cn,73,16475688136,M,2025-05-14,inactive,46054.25,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+74189,validuser,validuser@example.com,30,13800138000,M,2026-06-04,active,1000.00,CN,boundary,register_date,reject,"register_date 为明天,超过今天上界"
+7353833,sato4565,sato4565@corp.net,25,17072748005,M,2025-08-29,active,17626.12,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8724929,lily5383,lily5383@corp.net,68,17145571716,M,2018-01-14,inactive,5966.74,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+370623,alex7717,alex7717@example.com,67,15836618682,M,2026-06-03,active,29966.76,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8645878,ken3566,ken3566@test.org,48,16289651805,M,2019-05-30,active,20904.87,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1228499,lucy3327,lucy3327@test.org,34,19883171113,F,2024-03-02,active,8407.83,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+1014133,amy5513,amy5513@test.org,68,13776799967,M,2024-01-26,active,49594.84,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5335888,ken5530,ken5530@demo.io,47,19707465614,M,2024-12-25,active,13837.45,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6173159,chen6623,chen6623@test.org,66,17910202530,F,2022-12-19,active,25565.54,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8852445,ivan1753,ivan1753@corp.net,37,15844092396,Other,2018-10-05,active,2818.86,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1154061,tom282,tom282@demo.io,36,15935290551,F,2020-09-30,active,25970.94,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4108128,nina7182,nina7182@demo.io,86,13943310456,F,2019-09-27,inactive,11638.01,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8988205,john9272,john9272@example.com,61,13403226875,M,2024-07-23,inactive,14168.28,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+5970456,lily6052,lily6052@test.org,34,15495708117,M,2019-04-05,pending,1504.16,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9065180,chen4416,chen4416@example.com,48,15602567557,F,2020-05-20,active,29207.73,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+8990467,alex3158,alex3158@example.com,62,19392697445,F,2022-11-30,inactive,35879.19,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2520243,zhao4283,zhao4283@demo.io,48,16225140146,F,2025-09-16,pending,18581.31,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5221415,ivan1274,ivan1274@mail.cn,31,19673609912,F,2025-09-06,active,26726.31,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+9643607,sato3070,sato3070@demo.io,84,15919766852,M,2022-12-21,inactive,25176.58,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2529655,ivan1321,ivan1321@example.com,68,16237846082,F,2024-04-08,active,289.98,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+5665950,omar6086,omar6086@mail.cn,73,15529649422,F,2021-10-26,active,18386.05,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+53981,omar6284,omar6284@demo.io,47,15845178536,M,2024-06-26,pending,15111.05,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+2529053,validuser,validuser@example.com,30,13800138000,M,2026-06-03,active,1000.00,CN,boundary,register_date,accept,register_date 等于今天(上界)
+9108616,ivan8283,ivan8283@demo.io,55,19435068421,Other,2024-02-05,active,46661.91,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3051779,alex5761,alex5761@example.com,90,16233865031,F,2021-03-16,active,7053.56,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9223372036854775807,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,user_id,accept,user_id 64 位整型上界
+5806817,leo1276,leo1276@mail.cn,81,13369986152,M,2018-10-05,active,34392.21,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+843764,validuser,validuser@example.com,30,03800138000,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 以 0 开头
+9150815,chen4627,chen4627@demo.io,79,15724303089,M,2024-07-27,banned,18749.62,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7133072,max7181,max7181@mail.cn,85,19881009370,M,2026-05-29,active,310.63,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2829684,john2438,john2438@demo.io,38,13941977777,M,2018-07-09,active,613.54,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8458745,kim8023,kim8023@mail.cn,54,18615510533,M,2020-02-18,active,22441.32,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+4390726,zhao2056,zhao2056@corp.net,84,17454478982,F,2018-07-16,active,14414.48,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+5225355,lucy2503,lucy2503@test.org,39,13870812051,F,2020-08-30,inactive,4115.80,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7471891,chen1377,chen1377@demo.io,21,15205609163,F,2023-02-28,active,19324.42,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1873726,john9288,john9288@demo.io,59,17452535647,Other,2024-10-17,active,49072.83,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3912754,aaaaaaaaaaaaaaaaaaaaa,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,reject,"username 21 位,超过最大长度"
+2835198,chen4609,chen4609@demo.io,52,17875959806,F,2021-08-10,inactive,16974.51,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4671883,ivan725,ivan725@mail.cn,40,16932718710,M,2023-08-13,active,44488.67,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2901311,validuser,a@b.co,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,email,accept,email 极短但合法
+0,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 为 0
+9670013,zoe3842,zoe3842@corp.net,90,18332489552,F,2024-04-14,active,11406.07,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2713672,mary7166,mary7166@demo.io,22,16206596873,F,2025-10-05,active,15638.23,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+385712,raj1215,raj1215@example.com,21,14316816244,M,2023-05-19,active,1554.17,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1061216,mary5432,mary5432@corp.net,86,19008991255,M,2023-08-28,inactive,15674.95,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9563463,li1798,li1798@mail.cn,24,15382790600,M,2019-04-10,active,39304.40,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3846767,raj8318,raj8318@test.org,45,19361113971,M,2018-06-15,active,15427.76,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+4919871,alex3882,alex3882@demo.io,74,18541619796,F,2021-02-25,active,43674.48,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8624305,max5301,max5301@corp.net,71,17091729482,M,2019-10-17,active,3877.02,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6075904,zhao6104,zhao6104@demo.io,55,16829833091,M,2020-01-26,active,794.75,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3591788,alex6676,alex6676@corp.net,84,14589251794,M,2021-08-06,pending,47509.25,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4791076,lucy3125,lucy3125@corp.net,21,19344239253,M,2025-01-06,active,26698.28,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4406554,li4716,li4716@example.com,24,15290805075,Other,2023-04-25,pending,4765.96,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1985917,li1065,li1065@demo.io,66,17778660267,F,2025-10-27,active,25610.25,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3156312,yuki7774,yuki7774@test.org,39,16159488000,M,2024-08-31,pending,47151.35,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6004575,li4831,li4831@example.com,39,15352429978,M,2024-09-27,active,18275.35,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3551289,mary9312,mary9312@mail.cn,34,17137061541,Other,2021-01-28,active,31577.62,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1610724,ivan3829,ivan3829@corp.net,43,13720630945,M,2024-06-23,inactive,17536.82,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+5120644,john3665,john3665@example.com,53,13150556093,F,2025-12-23,inactive,22179.60,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5020268,eva5791,eva5791@mail.cn,19,18199692874,M,2022-11-25,pending,6296.93,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+3556922,raj4483,raj4483@corp.net,79,14373027109,M,2025-12-28,active,45481.46,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6286907,li3949,li3949@mail.cn,45,19514315094,M,2021-03-29,active,41586.35,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+583971,tom8201,tom8201@test.org,62,14267916207,F,2020-09-15,inactive,30018.82,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6843990,max8875,max8875@example.com,52,19089492010,F,2019-12-28,active,27834.87,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1416085,li9871,li9871@corp.net,86,19297543061,F,2018-10-29,active,10014.41,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+4063704,validuser,validuser@example.com,30,13800138000,1,2023-06-15,active,1000.00,CN,abnormal,gender,reject,gender 用数字表示
+abc,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 非数字
+-5,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 负数
+9406470,amy8860,amy8860@example.com,67,15839339518,M,2024-01-02,banned,45416.57,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+4455352,leo5200,leo5200@mail.cn,67,18477360717,F,2025-03-02,active,1815.01,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8581640,li67,li67@test.org,71,18354877426,F,2021-11-07,active,47047.94,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2478621,amy5384,amy5384@demo.io,59,19401371013,M,2022-07-13,active,45.90,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9116569,tom1422,tom1422@mail.cn,89,15922699534,F,2020-06-30,active,19796.50,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+5841961,amy2152,amy2152@corp.net,36,13681542654,M,2023-12-17,active,48415.08,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+9796811,lily9534,lily9534@mail.cn,20,16807363924,M,2018-07-19,active,28825.17,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6039828,zoe8659,zoe8659@mail.cn,53,19845476349,M,2023-05-31,active,13718.60,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7863010,eva2072,eva2072@demo.io,36,14528184460,F,2020-12-18,active,24661.63,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3271260,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CHN,abnormal,country_code,reject,country_code 3 位
+4684735,leo4993,leo4993@mail.cn,61,13252973593,F,2019-12-21,active,12659.03,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+1298422,validuser,plainaddress,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 缺少 @
+2168663,raj2042,raj2042@corp.net,69,19375734010,Other,2020-04-26,banned,45591.41,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4510334,eva4486,eva4486@corp.net,83,14265774287,F,2019-06-10,active,15181.00,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+8928726,nina7720,nina7720@test.org,62,18386709261,M,2024-10-16,active,40434.01,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5250522,tom785,tom785@corp.net,21,14355606221,F,2019-03-08,inactive,3259.51,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+4941913,ivan509,ivan509@mail.cn,62,19377366190,M,2022-07-16,active,49453.11,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8081994,wang1593,wang1593@example.com,70,19863910148,M,2019-09-11,pending,37249.05,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4579753,max9311,max9311@test.org,76,14462689555,F,2022-07-21,inactive,38818.05,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+214891,nina2419,nina2419@test.org,40,16612401982,F,2025-03-02,inactive,362.89,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+3116571,max7517,max7517@mail.cn,46,14340672041,M,2018-11-06,banned,25311.87,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7185561,tom8935,tom8935@corp.net,21,17688265071,M,2018-12-16,active,22097.53,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+4272094,max4349,max4349@mail.cn,52,19367857324,M,2019-12-06,active,9658.91,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+5600627,alex198,alex198@example.com,21,18202282051,F,2020-05-26,active,31059.72,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1048430,zoe7566,zoe7566@mail.cn,69,16496552990,Other,2018-03-22,active,20405.64,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+9510659,validuser,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,email,accept,email 本地部分 64 字符上界
+3280886,ivan2777,ivan2777@demo.io,65,17338664224,M,2025-08-26,pending,18305.31,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3003948,lucy1068,lucy1068@example.com,27,18727563143,F,2024-09-27,active,3203.73,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8214284,tom4885,tom4885@example.com,89,16913148487,M,2023-04-29,active,31147.53,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+690656,mary2191,mary2191@test.org,69,16674227816,M,2018-10-23,inactive,40605.12,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+4094228,zhao5023,zhao5023@demo.io,35,15230134448,M,2024-07-09,banned,1667.20,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+1205691,ivan2016,ivan2016@corp.net,47,14669777651,M,2020-10-04,active,30362.31,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7235993,mary2173,mary2173@demo.io,77,15042581373,F,2025-09-27,active,20244.58,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5386364,<script>alert(1)</script>,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username XSS 脚本
+4575810,amy3480,amy3480@mail.cn,49,13289938317,M,2024-08-08,active,16078.90,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2463249,validuser,validuser@example.com,30,13800138000,X,2023-06-15,active,1000.00,CN,abnormal,gender,reject,gender 非法枚举值
+9782453,zoe9211,zoe9211@test.org,64,15364073254,F,2024-10-20,banned,46113.91,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+2732204,lily5083,lily5083@test.org,38,19677496316,F,2018-06-19,active,47230.63,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+3661655,wang4656,wang4656@corp.net,67,18757171413,F,2021-07-12,active,42881.58,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8886658,lucy7141,lucy7141@corp.net,60,18493552514,Other,2022-08-28,active,2908.50,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1649252,alex6807,alex6807@mail.cn,29,18406137041,F,2023-11-08,active,20843.28,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8229541,nina5174,nina5174@corp.net,62,18817421439,M,2026-05-19,active,19488.78,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8453046,mary4535,mary4535@example.com,20,19515142193,M,2020-08-24,pending,44006.46,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9017694,kim3330,kim3330@demo.io,41,13383185221,F,2019-07-01,active,11594.76,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7899721,lucy7777,lucy7777@test.org,63,16888874284,M,2023-09-07,active,5059.47,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2954460,chen9026,chen9026@corp.net,48,14096316025,F,2023-11-26,banned,1770.21,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1638526,sara9299,sara9299@mail.cn,43,17100732518,M,2018-07-21,active,32464.64,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7222475,validuser,validuser@example.com,0,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 为 0
+3276239,sato5659,sato5659@test.org,20,18547615733,F,2019-07-10,active,16154.36,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4149599,nina2846,nina2846@test.org,41,17192536167,M,2018-12-10,active,18938.09,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+4049440,leo1049,leo1049@corp.net,32,18556224674,F,2023-11-21,active,43167.82,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4558396,leo8671,leo8671@corp.net,50,17181244692,M,2020-06-04,active,14595.37,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1476634,raj6505,raj6505@example.com,32,19801021645,F,2024-03-18,pending,18458.33,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1901204,li6507,li6507@test.org,52,14192159856,F,2025-05-06,active,16722.57,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+979271,aaaaaaaaaaaaaaaaaaaa,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,accept,username 最长 20 位
+5852457,kim8339,kim8339@corp.net,46,13238099419,F,2022-03-25,banned,15303.63,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+8888395,nina1792,nina1792@test.org,40,17723140646,F,2021-05-18,active,39741.09,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8170200,omar9334,omar9334@mail.cn,65,14495798864,M,2025-08-03,active,10426.64,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2421290,zhao8788,zhao8788@test.org,46,16915678495,F,2024-01-19,active,39545.51,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9108854,zhao3837,zhao3837@example.com,54,14746260053,Other,2019-02-12,active,28705.24,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1914866,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,abc,CN,abnormal,balance,reject,balance 非数字
+9028653,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,99999999.99,CN,boundary,balance,accept,balance 大额上界
+4357039,eva7437,eva7437@test.org,42,17518898038,M,2021-05-07,active,43422.84,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3628350,nina2545,nina2545@demo.io,67,16207586545,F,2023-09-24,active,1515.38,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8409827,lucy132,lucy132@mail.cn,79,15454903090,F,2024-06-24,active,6348.66,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+387063,ivan8041,ivan8041@demo.io,43,15342756040,F,2025-05-02,active,12787.94,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+227008,zhao8844,zhao8844@mail.cn,51,13211037501,F,2023-04-20,active,28044.43,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1666745,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1e3,CN,abnormal,balance,reject,balance 科学计数法
+1144965,validuser,validuser@example.com,30,12345678901,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 第二位为 2(非法号段)
+4920849,raj7876,raj7876@mail.cn,51,18850286010,F,2023-12-18,active,49336.92,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2147483647,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,user_id,accept,user_id 32 位整型上界
+3480535,zhao4938,zhao4938@mail.cn,24,17096300867,F,2019-03-16,active,10463.49,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6051511,sato2534,sato2534@corp.net,39,17421852921,F,2025-10-30,pending,42126.74,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7895068,leo3515,leo3515@demo.io,32,15684023071,M,2019-09-09,inactive,28053.48,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1574439,yuki3734,yuki3734@corp.net,62,16767773013,F,2018-02-05,active,34348.26,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8987932,yuki9793,yuki9793@example.com,37,19750786930,M,2018-12-14,active,29341.53,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7672411,max4787,max4787@corp.net,28,15970689643,F,2023-10-22,banned,40756.76,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+323361,leo1220,leo1220@test.org,41,16136752628,F,2021-10-08,active,22962.50,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9654021,yuki7966,yuki7966@demo.io,55,13911722127,F,2021-09-16,active,48874.92,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2444401,max9989,max9989@mail.cn,20,15502941991,F,2021-07-31,active,33503.96,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8577091,ken4927,ken4927@example.com,81,16011094056,M,2019-09-12,active,39582.11,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+3073991,kim9676,kim9676@test.org,88,14757495676,M,2018-06-28,active,29039.67,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+6830475,sara2510,sara2510@demo.io,47,18132840063,F,2019-06-14,active,42761.61,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7417128,li905,li905@test.org,24,18680527369,M,2024-04-15,active,4142.98,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+5493047,lucy9869,lucy9869@corp.net,83,13859306102,F,2024-01-15,active,24868.77,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9241218,john8002,john8002@demo.io,40,16491798603,M,2025-02-03,active,8822.41,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+4407115,validuser,validuser@example.com,18,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,accept,age 下界 18
+325461,max200,max200@demo.io,90,18756896792,M,2018-08-01,active,3963.79,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+592862,omar609,omar609@example.com,80,16493075434,F,2022-04-04,inactive,12092.12,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2097478,omar8723,omar8723@test.org,34,14658195866,M,2024-01-23,active,32720.43,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9355421,lily7293,lily7293@demo.io,87,16969651158,M,2021-10-28,active,36897.60,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4619840,ivan365,ivan365@corp.net,61,19414255835,F,2021-01-30,inactive,2869.35,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1076554,lily6225,lily6225@test.org,44,19749966449,F,2018-02-06,active,34847.60,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6461036,omar7576,omar7576@demo.io,74,17524890897,F,2019-06-03,active,47005.84,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3454493,validuser,validuser@example.com,30,13800138000,M,2023-06-15,ACTIVE,1000.00,CN,abnormal,status,reject,status 大小写不符枚举
+2081481,leo5951,leo5951@test.org,57,18619688173,M,2024-09-18,inactive,31902.00,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6020656,alex8588,alex8588@example.com,49,16161936168,M,2019-11-16,active,4647.00,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7884225,amy9076,amy9076@demo.io,82,16866748518,F,2020-05-24,inactive,44049.42,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8059456,leo1506,leo1506@test.org,64,18477603335,M,2026-02-15,active,42641.25,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9174016,li4039,li4039@mail.cn,81,17028063658,F,2022-03-10,active,49473.79,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4951988,lily259,lily259@example.com,71,19374217782,F,2024-06-16,active,44530.35,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4312477,validuser,validuser@example.com,30,13800138000,M,2023-02-30,active,1000.00,CN,abnormal,register_date,reject,register_date 不存在的日期
+2600721,max4578,max4578@example.com,75,16283220366,M,2019-07-18,active,18441.48,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5280378,zoe1079,zoe1079@test.org,77,18238722116,M,2024-06-17,active,15452.25,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+705019,aaaaaaaaaaaaaaaaaaaa,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,accept,username 最长 20 位
+6685433,validuser,validuser@example.com,18,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,accept,age 下界 18
+5686029,ken3286,ken3286@corp.net,40,13305463766,M,2024-07-04,inactive,608.45,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9256122,validuser,validuser@example.com,30,13000000000,M,2023-06-15,active,1000.00,CN,boundary,phone,accept,phone 合法 11 位最小段位
+7412417,amy9113,amy9113@demo.io,79,17585289705,F,2024-01-11,inactive,47771.14,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6011726,eva1376,eva1376@mail.cn,34,17208654623,F,2025-05-22,active,44460.47,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+8098223,li3779,li3779@demo.io,74,17877972597,F,2021-07-09,active,44030.06,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6684455,nina708,nina708@demo.io,52,16621069423,M,2021-08-03,active,42508.17,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2147483647,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,user_id,accept,user_id 32 位整型上界
+8083227,validuser,validuser@example.com,30,+8613800138000,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 带国家码前缀
+83214,lucy8068,lucy8068@mail.cn,46,16020342603,F,2025-03-19,inactive,34580.27,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5298257,sara3789,sara3789@test.org,52,16459101132,M,2021-11-04,banned,47312.54,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+5073988,amy6106,amy6106@mail.cn,56,16638097971,M,2019-04-21,active,27815.84,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+418857,lucy5867,lucy5867@example.com,74,18931182638,F,2024-07-04,active,20641.34,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+829027,ivan9114,ivan9114@corp.net,23,19565306531,M,2023-06-06,inactive,1050.96,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2800380,validuser,validuser@example.com,30,12345678901,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 第二位为 2(非法号段)
+9535876,lily4168,lily4168@mail.cn,76,13756974989,F,2020-06-07,inactive,44255.11,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2890158,kim8661,kim8661@test.org,78,16951975109,M,2019-06-11,inactive,8644.50,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5645562,lily2204,lily2204@example.com,57,16530903243,F,2025-02-15,active,22481.75,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4984490,raj4656,raj4656@example.com,61,15611685399,F,2025-07-27,active,22298.14,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+9382503,chen6066,chen6066@demo.io,45,14798288961,F,2022-09-28,inactive,15362.15,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8054511,omar632,omar632@mail.cn,58,17881839537,F,2024-11-10,active,32914.40,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+920357,ken539,ken539@corp.net,84,19508725252,M,2020-05-04,active,31358.35,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+817757,nina7295,nina7295@corp.net,62,15335815873,M,2021-09-28,active,30948.29,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+7266515,validuser,validuser@example.com,,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 为空
+6053012,ivan5230,ivan5230@example.com,58,15230556310,F,2022-04-16,active,47149.44,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4986217,eva8561,eva8561@corp.net,79,18379409398,M,2019-04-26,active,46351.14,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8075930,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,99999999.99,CN,boundary,balance,accept,balance 大额上界
+2743812,ivan8256,ivan8256@example.com,21,19196397955,M,2022-03-11,active,36982.90,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6972700,validuser,validuser@example.com,30,03800138000,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 以 0 开头
+4890164,john2986,john2986@test.org,28,16372122232,F,2020-04-20,pending,32816.12,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+1058131,ab,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,reject,"username 仅 2 位,低于最小长度"
+9223372036854775807,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,user_id,accept,user_id 64 位整型上界
+4721439,tom4775,tom4775@corp.net,22,17005231711,M,2025-01-01,active,20377.47,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3957447,nina3764,nina3764@corp.net,36,17475643415,M,2020-10-27,active,34649.61,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3450273,ivan246,ivan246@example.com,34,16053360653,F,2021-10-11,inactive,40069.08,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+4427194,john7227,john7227@example.com,29,13207456295,M,2019-02-22,active,4728.85,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3826451,mary6148,mary6148@mail.cn,79,16650661059,F,2022-03-02,active,26130.28,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2792411,lucy5168,lucy5168@demo.io,18,15372994006,M,2018-07-23,active,5735.20,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3205645,amy7966,amy7966@example.com,22,13285124593,M,2021-10-21,active,297.03,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1872077,leo792,leo792@example.com,50,15838091131,M,2023-02-12,active,23452.84,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4021471,sara590,sara590@corp.net,18,17375753042,F,2024-05-01,active,11367.97,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+4229431,wang5754,wang5754@mail.cn,43,13109301371,M,2025-06-28,active,13080.06,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8571472,mary8739,mary8739@corp.net,85,18671681156,M,2024-03-29,active,41146.61,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+845328,aaaaaaaaaaaaaaaaaaaa,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,accept,username 最长 20 位
+5061270,raj9819,raj9819@example.com,53,15411513488,F,2022-07-28,active,27227.41,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+531017,validuser,validuser@example.com,999,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 超大值
+2854828,lucy3308,lucy3308@mail.cn,30,15654806672,M,2021-12-15,active,33294.84,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+295262,sato3210,sato3210@corp.net,55,15163085964,M,2018-06-03,active,13612.14,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+170634,john5740,john5740@corp.net,75,15319691525,F,2021-10-29,inactive,42634.14,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+4061697,ken2747,ken2747@test.org,35,14494396150,M,2020-09-28,active,15861.88,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5720935,validuser,,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 为空
+7337214,lucy8143,lucy8143@mail.cn,78,14842663124,M,2020-05-17,banned,14111.75,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+3409580,lily9723,lily9723@test.org,59,14754577771,F,2021-10-20,active,11769.93,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1252433,validuser,validuser@example.com,30,190000000000,M,2023-06-15,active,1000.00,CN,boundary,phone,reject,phone 多达 12 位
+7906395,validuser,validuser@example.com,30,13800138000,M,2023-06-15,,1000.00,CN,abnormal,status,reject,status 为空
+5708405,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,-0.01,CN,boundary,balance,reject,balance 刚跨过 0 变负
+4018032,sato676,sato676@test.org,65,13142090706,M,2019-09-09,active,22864.55,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+22550,zhao2239,zhao2239@demo.io,66,19661152614,M,2018-05-31,active,38010.24,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5773438,max1124,max1124@demo.io,76,19767054295,F,2022-08-26,active,42345.62,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+9410776,bad name,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 含空格
+9324532,ken3548,ken3548@corp.net,50,16218855480,M,2022-07-12,active,37034.17,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5444792,validuser,validuser@example.com,17,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,reject,age 17 低于下界
+7822717,sara316,sara316@demo.io,47,17331338487,M,2026-01-11,active,40553.14,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7122491,zoe6485,zoe6485@test.org,82,15339579077,F,2019-07-18,active,13262.92,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+7765148,ivan3641,ivan3641@example.com,90,14437568375,M,2025-04-20,active,25303.85,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3895135,amy2006,amy2006@example.com,63,18901402991,F,2025-04-18,active,22384.25,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+2215177,zhao5133,zhao5133@demo.io,83,19251778449,F,2020-11-09,pending,11344.54,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2829209,mary1524,mary1524@test.org,46,19416837889,F,2019-03-15,active,6181.54,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9767408,zhao8190,zhao8190@corp.net,31,16884400754,F,2024-04-05,active,10936.86,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8601519,eva4712,eva4712@corp.net,61,16488533406,M,2019-10-20,active,12777.27,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+2868443,leo9714,leo9714@test.org,79,15127130874,M,2019-12-27,pending,47529.89,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9815282,zoe5887,zoe5887@test.org,38,16630781426,F,2022-01-23,active,7985.54,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2765461,validuser,space in@mail.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 含空格
+1615776,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,1,abnormal,country_code,reject,country_code 数字
+673662,yuki1249,yuki1249@example.com,50,14200618948,F,2022-09-28,active,45168.17,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9881950,alex836,alex836@test.org,21,18747121180,F,2021-03-10,active,8497.37,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9458763,amy6266,amy6266@demo.io,75,17328639461,F,2023-08-31,active,6198.90,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3400610,john2543,john2543@example.com,70,15944519466,M,2020-11-28,active,32029.12,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9302190,lucy4399,lucy4399@mail.cn,23,16123946957,M,2024-08-12,banned,8554.71,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+3528566,ab,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,reject,"username 仅 2 位,低于最小长度"
+1921003,validuser,validuser@example.com,30,13800138000,male,2023-06-15,active,1000.00,CN,abnormal,gender,reject,gender 大小写/拼写不符枚举
+8946652,max3157,max3157@example.com,72,19510910274,M,2021-05-03,active,29143.78,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9511968,yuki4736,yuki4736@demo.io,18,17261134565,F,2020-11-04,active,42083.48,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+347436,mary907,mary907@corp.net,45,19127842371,M,2024-03-02,active,45207.99,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5756856,sara1294,sara1294@mail.cn,85,17024412330,M,2023-03-04,active,44649.98,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+122873,omar5926,omar5926@demo.io,34,14362296830,M,2024-02-25,active,24814.84,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1117701,mary3204,mary3204@corp.net,48,13390654309,M,2025-02-11,active,3085.79,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2670496,mary8247,mary8247@test.org,26,18991660331,M,2020-03-11,active,18221.73,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+5306850,raj9162,raj9162@corp.net,34,19093643577,M,2024-11-23,inactive,29436.00,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3307748,lily1422,lily1422@corp.net,78,14428537224,F,2018-10-31,inactive,11135.24,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+3700975,zoe8082,zoe8082@mail.cn,86,19858599569,F,2024-09-08,active,49252.41,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3806784,aaaaaaaaaaaaaaaaaaaaa,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,reject,"username 21 位,超过最大长度"
+3605488,li1847,li1847@demo.io,45,19830511956,F,2024-01-28,active,20836.55,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1291027,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,-100.00,CN,abnormal,balance,reject,balance 负数
+3819818,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CHN,abnormal,country_code,reject,country_code 3 位
+7792177,kim6329,kim6329@mail.cn,70,19278665110,M,2023-08-01,active,28822.46,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1694553,john1086,john1086@mail.cn,78,15147046912,F,2024-06-14,inactive,4849.01,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9658242,mary1074,mary1074@corp.net,49,16822279832,M,2022-09-22,active,22880.05,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2690798,john992,john992@corp.net,28,19576409312,M,2020-10-09,active,6035.89,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6670511,sato7336,sato7336@mail.cn,26,15859067661,M,2021-08-19,active,38547.30,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+3078967,lily6021,lily6021@corp.net,73,16653131262,Other,2026-03-08,active,31687.21,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2147483647,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,user_id,accept,user_id 32 位整型上界
+5153115,max5734,max5734@corp.net,72,16748665932,F,2021-09-24,active,42926.27,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1734312,eva5067,eva5067@test.org,89,19481721575,F,2020-07-26,pending,49184.68,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7419197,sara1636,sara1636@corp.net,77,18395621568,M,2023-12-20,active,11683.36,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9614818,tom5827,tom5827@example.com,38,18892387587,M,2024-11-03,pending,39548.43,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6531074,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 与已有记录重复
+8138182,wang5636,wang5636@example.com,82,16912310205,M,2022-02-02,active,18704.47,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2526383,validuser,validuser@example.com,30,138-0013-8000,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 含分隔符
+6834046,lily936,lily936@demo.io,86,18959210829,Other,2025-10-28,active,25429.86,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+6653813,tom3395,tom3395@corp.net,30,16662197335,F,2024-05-28,pending,48455.56,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4795917,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,100.999,CN,abnormal,balance,reject,balance 超过两位小数
+1559283,amy1458,amy1458@corp.net,75,15883971103,M,2025-09-21,active,21167.53,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8094367,li3733,li3733@example.com,20,19688496132,F,2020-05-29,inactive,47069.78,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3792762,validuser,validuser@example.com,30,13800138000,M,2023/06/15,active,1000.00,CN,abnormal,register_date,reject,register_date 分隔符错误
+8158365,nina9245,nina9245@demo.io,75,19861545948,Other,2019-09-25,active,48476.63,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3036703,chen3432,chen3432@test.org,79,18259742731,M,2026-03-22,inactive,31034.48,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7208314,ken4182,ken4182@corp.net,69,17944336647,Other,2021-10-03,active,13890.40,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9021447,omar8872,omar8872@demo.io,30,14127499620,F,2024-09-13,active,12976.10,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9002958,eva2740,eva2740@corp.net,30,19528230920,F,2018-10-29,active,8030.17,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9790150,kim2334,kim2334@test.org,49,17996579682,F,2018-04-27,active,46074.23,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8058631,zoe6199,zoe6199@test.org,80,15677937594,F,2022-05-30,pending,17151.50,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+8932230,max7083,max7083@example.com,70,19626264247,M,2018-04-15,pending,46645.57,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8512761,alex1110,alex1110@test.org,70,17010770665,F,2019-10-26,pending,2588.19,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3585950,validuser,validuser@example.com,120,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,accept,age 上界 120
+6844085,lily9136,lily9136@demo.io,45,17856432542,F,2023-06-27,active,46257.03,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1100831,eva57,eva57@mail.cn,61,17665531915,Other,2022-12-20,active,48872.99,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7665122,validuser,validuser@example.com,121,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,reject,age 121 超过上界
+1087960,john5736,john5736@demo.io,67,15086868115,M,2024-03-08,active,7140.23,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+2749700,john7777,john7777@mail.cn,79,15057080869,M,2023-02-18,active,29545.32,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8921670,tom4476,tom4476@test.org,88,16015736737,F,2023-03-15,pending,20274.69,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1732890,alex8174,alex8174@example.com,48,18251498606,Other,2020-10-06,active,43332.55,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9067220,tom2461,tom2461@corp.net,48,14422207028,M,2019-07-06,active,18135.16,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8900990,kim1662,kim1662@demo.io,64,19310448978,M,2018-01-19,active,9795.99,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6854519,wang9827,wang9827@corp.net,46,19298104106,M,2022-03-04,active,40878.22,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8111051,nina9132,nina9132@example.com,42,16070118881,M,2020-02-26,pending,2089.92,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+8457849,leo4017,leo4017@test.org,85,19021574154,F,2026-03-24,active,4854.80,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8424907,mary4247,mary4247@corp.net,81,16187680181,Other,2019-01-08,pending,14450.94,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+5932259,ab,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,reject,"username 仅 2 位,低于最小长度"
+3024534,zoe4820,zoe4820@test.org,87,17620275744,M,2026-05-04,pending,22640.36,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3113314,nina5635,nina5635@example.com,70,13699648687,M,2020-06-04,active,48640.57,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+8622406,ivan3193,ivan3193@demo.io,38,18178401084,F,2018-07-25,inactive,36257.52,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2066469,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,,abnormal,country_code,reject,country_code 为空
+1735997,validuser,validuser@example.com,30,13800138000,M,2026-06-04,active,1000.00,CN,boundary,register_date,reject,"register_date 为明天,超过今天上界"
+4818721,zhao7799,zhao7799@example.com,31,14757388725,F,2018-05-18,active,6611.12,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8038277,yuki6962,yuki6962@demo.io,74,18029847304,M,2019-10-26,active,27750.43,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5287026,user@#$%,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 含特殊符号
+1684201,zhao965,zhao965@demo.io,41,14784885080,F,2020-10-11,pending,36447.28,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+1552736,eva5846,eva5846@example.com,87,16291631677,M,2019-06-05,inactive,25366.40,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7745876,validuser,validuser@example.com,30,13800138000,M,2023-13-01,active,1000.00,CN,abnormal,register_date,reject,register_date 月份越界
+5951634,validuser,validuser@example.com,30,,M,2023-06-15,active,1000.00,CN,abnormal,phone,reject,phone 为空
+1791743,lucy2907,lucy2907@corp.net,62,18636725274,F,2022-12-29,inactive,15200.13,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7849289,chen722,chen722@demo.io,28,19370404516,F,2023-06-23,active,3740.51,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8978865,kim4184,kim4184@example.com,81,15031770436,M,2021-09-27,active,10490.56,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2969621,eva3173,eva3173@test.org,27,17993377782,Other,2018-03-01,active,41342.93,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+4484246,zhao5668,zhao5668@example.com,43,13205574396,M,2020-05-03,pending,23717.94,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1365534,leo569,leo569@test.org,70,18683689628,F,2023-11-19,active,47733.38,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7428699,lucy519,lucy519@corp.net,21,16042773666,Other,2025-11-05,active,43113.33,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+113107,zhao5229,zhao5229@corp.net,76,18212598056,F,2025-02-24,inactive,11746.16,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+754705,kim7127,kim7127@example.com,82,18722126235,Other,2018-09-30,active,5401.65,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+9680600,ken176,ken176@demo.io,62,19103721303,F,2024-06-15,active,26428.33,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6754037,validuser,validuser@example.com,30,13800138000,M,15-06-2023,active,1000.00,CN,abnormal,register_date,reject,register_date 顺序错误
+4876327,zoe9784,zoe9784@test.org,40,13025369144,M,2022-02-18,active,2129.35,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6094626,sato502,sato502@test.org,67,16790252955,M,2026-03-15,active,19235.74,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+482994,validuser,validuser@example.com,30,13800138000,M,2026-06-04,active,1000.00,CN,boundary,register_date,reject,"register_date 为明天,超过今天上界"
+687869,wang2599,wang2599@test.org,76,16686049076,F,2023-06-18,active,16068.91,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9976761,amy7327,amy7327@corp.net,51,17508574683,M,2020-11-02,inactive,23512.49,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4203892,sara8269,sara8269@demo.io,71,14555587763,M,2022-09-05,active,20714.17,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3243860,leo7615,leo7615@test.org,34,15507580512,F,2023-01-07,active,35397.93,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1703494,ken460,ken460@mail.cn,32,13665043467,F,2022-06-19,active,2104.74,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+1,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,user_id,accept,user_id 最小有效值 1
+0,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 为 0
+9069380,eva8856,eva8856@corp.net,21,13342870992,F,2026-02-14,active,17956.76,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4216788,nina7214,nina7214@example.com,74,19437725841,M,2024-04-25,active,48056.49,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+4746609,mary9078,mary9078@example.com,36,18639309489,M,2020-11-06,banned,34480.90,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8359675,kim9637,kim9637@corp.net,58,19570377720,F,2018-04-30,active,45768.64,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6401363,alex1901,alex1901@demo.io,30,19869815052,M,2022-10-30,active,7096.58,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+217892,eva5101,eva5101@example.com,26,18344030316,M,2022-04-22,active,44954.90,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7758,yuki8060,yuki8060@mail.cn,86,17594883816,M,2021-10-25,active,37951.38,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3208035,zoe2370,zoe2370@example.com,86,16929105993,F,2024-05-29,active,23547.50,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9564191,validuser,plainaddress,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 缺少 @
+1341664,amy3828,amy3828@corp.net,24,18318653984,F,2021-11-03,banned,19920.72,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+47239,alex5921,alex5921@corp.net,77,19693046664,M,2025-12-21,pending,48020.18,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6510649,mary503,mary503@test.org,49,16407414493,F,2025-06-13,inactive,7073.86,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+4489634,nina7145,nina7145@corp.net,32,14514088196,F,2022-07-02,pending,12323.79,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3155001,nina2309,nina2309@mail.cn,73,13247524752,M,2023-11-26,active,6628.10,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1613594,zhao2698,zhao2698@example.com,70,15608387487,M,2020-02-12,active,40689.09,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+1725497,leo4373,leo4373@example.com,23,15476660491,F,2022-02-23,active,21809.36,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+3700192,zoe4766,zoe4766@test.org,45,18420005724,F,2018-04-08,active,19788.88,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+8682418,eva8064,eva8064@corp.net,80,19956503284,F,2026-03-18,inactive,9145.01,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8446760,alex2967,alex2967@test.org,42,13148721897,M,2026-01-26,active,7805.39,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+abc,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 非数字
+2139764,lily6224,lily6224@demo.io,52,15121449910,F,2026-02-24,active,37446.47,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5377987,kim7481,kim7481@test.org,32,16462254350,M,2024-09-26,active,38994.36,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4145167,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,-100.00,CN,abnormal,balance,reject,balance 负数
+5977487,zoe3472,zoe3472@mail.cn,33,13520665624,F,2019-02-03,active,4140.84,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+5045174,zoe8618,zoe8618@example.com,56,16513124453,M,2019-07-19,active,21927.89,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9768835,omar7399,omar7399@corp.net,76,15967320205,F,2020-06-07,active,48948.27,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5015310,zoe4113,zoe4113@test.org,25,19044660319,F,2022-06-06,pending,25915.51,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2002097,max7470,max7470@test.org,79,14635526759,M,2024-09-12,active,26109.98,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5775334,li3769,li3769@mail.cn,71,17412366402,Other,2020-07-24,pending,5606.33,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+8710404,omar4061,omar4061@mail.cn,41,19497231225,F,2025-04-14,active,972.92,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1104019,omar4231,omar4231@corp.net,66,15452208245,M,2022-12-19,active,29630.95,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1.5,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 为小数
+6056462,li5948,li5948@test.org,86,14531773703,F,2024-05-19,active,21523.50,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8620351,validuser,validuser@example.com,30,13800138000,M,2023-02-30,active,1000.00,CN,abnormal,register_date,reject,register_date 不存在的日期
+2094828,chen8816,chen8816@mail.cn,44,13426667965,Other,2023-11-02,inactive,18077.49,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+2089547,sara905,sara905@test.org,79,18714651700,M,2023-10-18,active,12488.66,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7354691,alex6160,alex6160@demo.io,30,17331212544,M,2020-04-21,active,27995.10,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+7607377,yuki8594,yuki8594@test.org,30,19747838751,M,2024-10-06,active,37752.10,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4206159,li96,li96@test.org,32,18467404411,F,2025-05-16,active,22009.63,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+4555944,amy761,amy761@example.com,76,16565740416,M,2021-04-24,active,45082.83,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6217024,amy3681,amy3681@example.com,76,17749453008,F,2019-05-09,active,48497.57,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3973674,yuki5861,yuki5861@demo.io,42,17543039684,F,2024-04-16,active,23726.23,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2102540,chen5186,chen5186@test.org,66,18858710493,M,2025-03-07,inactive,1241.48,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2684640,raj4095,raj4095@test.org,42,18260872399,F,2022-09-03,active,7398.38,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3796702,alex4386,alex4386@test.org,79,15020401830,M,2020-04-26,active,9070.24,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8333878,eva9449,eva9449@demo.io,31,13909560327,F,2025-05-17,pending,14433.39,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3369903,alex2013,alex2013@corp.net,58,16074981434,F,2018-04-07,pending,22579.12,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3084422,lucy2191,lucy2191@example.com,28,13854475871,M,2020-01-05,active,9685.50,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1426975,amy7039,amy7039@corp.net,88,16145678378,M,2023-10-19,active,3713.92,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+3636334,raj7362,raj7362@example.com,26,15718488511,F,2021-02-08,inactive,31044.69,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9768652,sato8792,sato8792@corp.net,26,19327234600,M,2023-10-17,active,48067.14,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+3166697,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,$100,CN,abnormal,balance,reject,balance 含货币符号
+9337052,alex6142,alex6142@corp.net,77,15355767593,F,2020-03-13,active,10595.72,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3446993,validuser,validuser@example.com,0,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 为 0
+5777112,kim2811,kim2811@example.com,19,19353486558,F,2021-12-02,active,42931.82,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3976415,wang2384,wang2384@corp.net,25,13761300841,M,2019-11-03,active,43253.77,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3046739,sara4693,sara4693@corp.net,21,15206039776,M,2023-09-14,active,15542.28,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3212935,raj3036,raj3036@corp.net,89,14236843328,M,2021-06-08,active,9135.13,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6874560,mary1310,mary1310@demo.io,37,16827319012,F,2024-04-19,pending,4109.64,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1346753,ken6375,ken6375@corp.net,67,19834939745,M,2023-04-27,active,3005.34,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7868408,omar5977,omar5977@demo.io,58,14536989107,F,2018-11-29,active,48158.60,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+8178395,tom2683,tom2683@demo.io,90,19478123327,M,2023-10-30,active,20620.17,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9418117,ken5802,ken5802@mail.cn,76,18044161072,F,2026-03-19,active,31487.07,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4589544,alex4751,alex4751@mail.cn,38,13753105273,F,2024-11-04,active,42133.79,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+6196365,li2769,li2769@example.com,75,14513450551,M,2024-08-17,active,22475.45,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+8045328,leo8559,leo8559@mail.cn,88,19794570894,F,2020-10-23,active,46023.17,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6365799,zhao1068,zhao1068@mail.cn,29,16129726109,M,2018-06-13,active,37905.81,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4376346,tom434,tom434@example.com,53,19720342165,F,2021-10-27,active,35989.02,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+7049267,amy7750,amy7750@corp.net,53,17295520399,F,2020-10-07,active,32746.54,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+3923013,ivan1299,ivan1299@test.org,28,19018230149,M,2024-06-02,banned,41946.80,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8735987,validuser,validuser@example.com,twenty,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 非数字
+1037851,raj2253,raj2253@example.com,53,19332972704,F,2020-05-27,active,34899.87,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5592778,kim261,kim261@corp.net,77,17111167283,M,2019-11-18,banned,26438.98,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+6831410,wang5040,wang5040@corp.net,28,16268553648,M,2025-02-12,active,10479.27,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1327673,raj1542,raj1542@corp.net,23,15022992181,M,2022-12-06,active,46218.77,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+9351528,yuki6230,yuki6230@example.com,74,14859498645,M,2024-03-10,active,29093.34,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2887516,eva746,eva746@corp.net,75,15712908974,M,2022-03-20,active,20813.55,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9626095,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,"1,000.00",CN,abnormal,balance,reject,balance 含千分位逗号
+8756285,john3125,john3125@test.org,22,19446798107,M,2022-03-07,active,30114.81,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+1613249,kim3329,kim3329@mail.cn,85,19573803263,F,2026-01-14,active,4738.22,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+994409,nina7555,nina7555@example.com,36,19227887106,F,2019-07-06,active,27827.18,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9926332,li3846,li3846@example.com,43,19356313937,F,2024-09-02,active,32003.03,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6024347,amy6370,amy6370@demo.io,63,17124152896,F,2021-03-24,active,19315.08,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2443357,john675,john675@test.org,48,16115681539,M,2023-11-07,active,7011.77,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+5629627,john1988,john1988@demo.io,47,13901614710,M,2019-05-16,active,34933.75,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9701668,yuki7120,yuki7120@demo.io,63,18377363915,F,2019-12-31,active,3345.32,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+781429,lucy8912,lucy8912@mail.cn,75,19971170944,M,2024-02-21,pending,8730.94,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+8397883,mary8099,mary8099@example.com,54,17200422395,F,2024-10-28,active,27720.55,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1098727,mary9016,mary9016@demo.io,30,16802547453,M,2022-06-29,active,10969.73,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1917569,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,,CN,abnormal,balance,reject,balance 为空
+5804624,lily2708,lily2708@example.com,79,16435020382,M,2023-07-17,banned,32644.14,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4346770,validuser,validuser@example.com,120,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,accept,age 上界 120
+2596859,john9670,john9670@demo.io,46,19902424474,M,2024-08-23,active,44877.60,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+5775069,omar2981,omar2981@demo.io,18,18707502796,F,2019-01-10,active,48664.55,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4080921,validuser,validuser@example.com,30,13800138000,M,,active,1000.00,CN,abnormal,register_date,reject,register_date 为空
+7608702,max5620,max5620@demo.io,88,18962477267,F,2025-12-31,active,42553.44,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1363702,amy2305,amy2305@corp.net,36,13709276769,F,2026-04-01,active,34069.42,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7993035,tom2145,tom2145@example.com,73,19075946418,Other,2020-11-24,inactive,4163.21,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5123360,lucy5688,lucy5688@mail.cn,25,14333516113,M,2025-03-25,pending,31497.77,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7029132,leo6917,leo6917@mail.cn,35,18745942109,F,2024-07-03,active,24845.37,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8518340,raj4034,raj4034@demo.io,70,17912031162,F,2020-10-23,active,44603.20,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5860701,mary54,mary54@demo.io,69,13502173432,F,2025-04-13,active,30498.28,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2167077,amy979,amy979@corp.net,86,18911652502,F,2019-05-19,active,3563.58,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,user_id,reject,user_id 为空
+4324631,zoe7283,zoe7283@demo.io,65,15497255922,F,2024-10-22,pending,4498.94,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3839145,validuser,validuser@example.com,121,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,reject,age 121 超过上界
+3571977,sara7348,sara7348@example.com,84,14907941621,M,2024-02-20,active,15493.88,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1224500,leo7254,leo7254@mail.cn,64,13488502753,M,2026-02-22,active,19230.76,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+699376,alex7023,alex7023@corp.net,66,18514356150,F,2022-07-17,inactive,46148.87,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+1376696,chen7509,chen7509@mail.cn,73,16505764659,F,2025-10-12,banned,17565.48,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+7210054,zoe9944,zoe9944@corp.net,73,17380832624,F,2018-03-04,inactive,40997.33,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+8786162,omar2697,omar2697@corp.net,73,17907557057,F,2024-08-10,inactive,43164.89,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3284663,eva3825,eva3825@mail.cn,20,15383259880,M,2023-07-07,active,25394.93,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+5044560,yuki9027,yuki9027@demo.io,67,15473836580,M,2019-03-07,active,18245.26,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+608890,nina346,nina346@demo.io,64,16411077134,M,2025-01-01,active,39458.67,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+2286600,wang9504,wang9504@example.com,46,13127951214,F,2025-04-09,active,20300.50,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1748118,leo332,leo332@mail.cn,32,17820598771,M,2023-09-22,inactive,23644.43,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+897834,validuser,validuser@example.com,30,13800138000,,2023-06-15,active,1000.00,CN,abnormal,gender,reject,gender 为空
+3349007,kim9894,kim9894@mail.cn,59,15259484458,F,2020-04-29,pending,7479.48,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+2963326,kim5154,kim5154@test.org,54,13459294192,M,2024-05-16,active,43638.02,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3627099,yuki3922,yuki3922@mail.cn,52,18402903667,M,2025-04-13,inactive,38988.87,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6328527,validuser,a@b.co,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,email,accept,email 极短但合法
+9346365,lily6680,lily6680@example.com,32,15691732697,M,2021-05-31,active,39423.17,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+148210,wang6879,wang6879@corp.net,62,17114911855,F,2020-09-26,active,10099.88,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1728199,wang9484,wang9484@demo.io,27,17613493190,M,2023-05-10,active,46213.59,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5078223,yuki2915,yuki2915@test.org,37,13162810194,F,2024-08-25,active,44109.35,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3687527,wang4839,wang4839@demo.io,69,19444796166,M,2018-09-10,inactive,16344.70,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9163547,validuser,validuser@example.com,120,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,accept,age 上界 120
+3727033,ivan9466,ivan9466@demo.io,75,14216464632,M,2023-05-24,active,27694.12,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2110470,yuki1500,yuki1500@test.org,32,18158649329,F,2025-02-02,active,7146.51,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6182208,raj6113,raj6113@corp.net,81,19736009825,F,2020-07-12,active,11268.69,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2968616,kim4764,kim4764@example.com,90,14037828397,F,2022-01-21,inactive,43256.44,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2832100,sara8915,sara8915@corp.net,49,14432382635,F,2025-06-29,active,27923.23,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1034104,validuser,validuser@example.com,30,13800138000,X,2023-06-15,active,1000.00,CN,abnormal,gender,reject,gender 非法枚举值
+4463952,kim5395,kim5395@corp.net,18,18849483409,M,2018-06-03,banned,18154.65,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+7512529,ivan6677,ivan6677@corp.net,56,17164305546,F,2019-07-11,inactive,22890.70,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+8858665,zoe3642,zoe3642@corp.net,77,14585530527,M,2025-06-03,active,21564.44,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6756092,lily361,lily361@test.org,29,16263660377,F,2021-02-11,active,17942.80,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4221362,sato5061,sato5061@test.org,81,16930072305,M,2021-11-15,inactive,6268.17,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+3112840,omar4363,omar4363@corp.net,54,16978213220,F,2025-09-15,active,14568.73,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+9479311,zhao2853,zhao2853@mail.cn,28,13486159083,M,2024-03-10,inactive,48494.12,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+220213,zhao7895,zhao7895@mail.cn,72,18392353362,M,2018-03-07,active,21271.72,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7250463,validuser,validuser@example.com,-1,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 负数
+9235447,sara4282,sara4282@corp.net,46,16376710114,F,2023-10-24,active,37542.02,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5602263,max6702,max6702@mail.cn,21,14578415760,M,2019-02-28,banned,47085.12,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7913350,amy8357,amy8357@corp.net,52,15406303225,M,2024-08-07,pending,18163.96,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4456384,eva5948,eva5948@corp.net,19,15506865964,M,2022-01-28,active,34955.44,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7160905,raj2550,raj2550@mail.cn,25,19506973653,F,2019-06-24,active,14009.07,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7096252,kim3679,kim3679@demo.io,57,14570070853,F,2022-10-22,banned,47297.56,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+4272612,validuser,validuser@example.com,999,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 超大值
+2463989,lily7250,lily7250@mail.cn,53,19404819207,F,2024-04-10,active,15904.48,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+6817196,amy7926,amy7926@example.com,73,18731513880,F,2025-12-23,active,47200.00,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8384313,yuki6793,yuki6793@demo.io,45,13777074151,F,2019-08-25,banned,13130.03,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7625362,validuser,validuser@example.com,30,13800138000,M,2026-06-03,active,1000.00,CN,boundary,register_date,accept,register_date 等于今天(上界)
+9263664,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,$100,CN,abnormal,balance,reject,balance 含货币符号
+2848997,validuser,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,email,accept,email 本地部分 64 字符上界
+3339793,ivan4629,ivan4629@corp.net,88,18968722178,F,2021-03-30,inactive,5821.40,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9786418,mary3427,mary3427@demo.io,57,19723772593,F,2023-05-19,active,18755.80,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+6863542,tom4473,tom4473@mail.cn,25,18283881639,F,2021-09-17,active,24270.21,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+7727470,amy2309,amy2309@demo.io,78,14937444599,M,2020-12-17,inactive,26621.09,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+135528,john8703,john8703@test.org,74,16703792433,M,2020-07-31,active,3391.02,AU,normal,-,accept,全部字段符合校验规则的典型有效数据
+3795973,max2342,max2342@mail.cn,71,15713927177,F,2020-11-05,active,5506.80,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+9369537,tom9086,tom9086@example.com,51,17188818408,M,2018-12-12,active,39898.66,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5833148,sato413,sato413@corp.net,52,13395736305,M,2025-01-26,active,49530.72,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4965816,wang9369,wang9369@mail.cn,18,18653385064,M,2022-05-13,inactive,25232.07,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+2185866,validuser,no@domain,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 缺少顶级域
+2539198,lucy8544,lucy8544@test.org,63,13130557911,M,2024-05-01,active,36117.70,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5344354,eva6265,eva6265@demo.io,78,18541643865,F,2025-04-21,active,12379.20,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2997828,john8443,john8443@example.com,71,17093390979,M,2026-05-08,active,32349.58,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1811851,zhao8001,zhao8001@corp.net,64,14177410525,F,2025-05-24,active,9538.87,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+1585305,validuser,validuser@example.com,17,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,reject,age 17 低于下界
+2638020,mary7139,mary7139@corp.net,73,16278278926,F,2020-03-05,active,22499.36,DE,normal,-,accept,全部字段符合校验规则的典型有效数据
+3783332,wang2872,wang2872@example.com,30,18458745122,F,2024-12-24,banned,23395.01,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1027407,abc,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,accept,username 最短 3 位
+637165,yuki6317,yuki6317@demo.io,18,17829582064,M,2020-03-04,active,31808.94,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8359013,wang3938,wang3938@example.com,80,13479939662,M,2018-08-01,inactive,42230.01,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6502233,abc,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,accept,username 最短 3 位
+4244107,ivan337,ivan337@corp.net,50,16512104361,M,2026-05-13,active,30235.00,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+4749000,tom7001,tom7001@mail.cn,72,18961277969,M,2020-07-23,inactive,40717.57,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+7151806,kim6240,kim6240@test.org,39,17645204773,F,2024-01-13,inactive,10406.93,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6880107,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,0.01,CN,boundary,balance,accept,balance 最小正向精度 0.01
+5450194,mary4732,mary4732@example.com,71,18633642338,F,2022-11-06,active,13766.83,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1243693,tom4920,tom4920@demo.io,82,17000775541,M,2024-02-06,active,24950.96,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+837005,sara2257,sara2257@mail.cn,47,13671592302,F,2022-06-22,active,19354.55,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1587536,amy1851,amy1851@demo.io,81,18473879358,F,2023-09-10,active,98.18,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+7637033,validuser,validuser@example.com,18,13800138000,M,2023-06-15,active,1000.00,CN,boundary,age,accept,age 下界 18
+1673108,yuki9372,yuki9372@test.org,31,13978342786,F,2026-02-17,active,42254.34,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9056988,alex6813,alex6813@demo.io,34,14756947221,F,2022-12-18,active,7482.01,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5128983,validuser,,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,email,reject,email 为空
+3233675,validuser,validuser@example.com,30,13000000000,M,2023-06-15,active,1000.00,CN,boundary,phone,accept,phone 合法 11 位最小段位
+4150581,max6606,max6606@example.com,64,14243367852,M,2021-12-27,inactive,42393.52,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1954625,zhao1526,zhao1526@corp.net,70,16345166629,M,2020-10-07,active,10735.71,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2522569,lily525,lily525@example.com,43,14949085502,M,2019-09-16,active,27977.83,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+8847095,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,cn,abnormal,country_code,reject,country_code 小写
+5134070,zoe2613,zoe2613@mail.cn,40,16138656069,M,2023-10-24,active,22162.28,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3905733,yuki7575,yuki7575@corp.net,18,13970608793,Other,2021-06-24,active,6750.65,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3413417,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,99999999.99,CN,boundary,balance,accept,balance 大额上界
+1528824,max2319,max2319@mail.cn,26,16443609589,F,2023-06-25,active,38902.94,GB,normal,-,accept,全部字段符合校验规则的典型有效数据
+5040779,nina7031,nina7031@mail.cn,45,14634008143,F,2022-04-05,active,25732.53,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+9008522,lucy3813,lucy3813@example.com,72,19956364296,F,2025-09-23,active,40053.16,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+7928343,zhao2881,zhao2881@test.org,42,18503750700,F,2023-02-04,inactive,49076.96,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+9277872,leo6441,leo6441@example.com,29,17405106103,F,2021-01-30,active,7851.22,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1513415,omar5369,omar5369@demo.io,31,17173965894,F,2020-10-07,active,48637.11,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+2832152,validuser,validuser@example.com,30,13800138000,M,,active,1000.00,CN,abnormal,register_date,reject,register_date 为空
+7802608,lucy196,lucy196@demo.io,49,17761259397,M,2020-07-08,active,4345.21,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6710278,yuki9460,yuki9460@example.com,68,19768679731,M,2021-10-01,inactive,15755.14,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3278592,lucy4756,lucy4756@test.org,44,16646927857,F,2019-12-12,active,43286.01,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+955830,eva4831,eva4831@corp.net,38,14669588529,F,2026-04-29,pending,31646.44,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+1,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,user_id,accept,user_id 最小有效值 1
+8631583,alex4671,alex4671@example.com,54,15261465513,F,2024-03-03,active,21913.49,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+4994465,wang8612,wang8612@demo.io,22,13011633407,F,2019-05-23,active,45151.13,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+189941,'; DROP TABLE users;--,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username SQL 注入串
+8109430,zoe4470,zoe4470@example.com,34,15114440836,M,2025-11-11,pending,21144.36,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8066968,kim5689,kim5689@mail.cn,62,13272322613,M,2021-10-19,active,32878.14,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+5763249,sara5541,sara5541@mail.cn,30,16721916636,M,2023-04-10,active,4.16,FR,normal,-,accept,全部字段符合校验规则的典型有效数据
+4793728,eva4147,eva4147@corp.net,63,16302493887,F,2021-03-12,active,32493.06,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3162144,lucy8203,lucy8203@demo.io,83,19776306173,F,2026-05-06,banned,17588.90,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+3457109,zhao6067,zhao6067@mail.cn,80,19690965108,M,2018-07-07,pending,22173.75,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+3776912,kim9469,kim9469@mail.cn,77,18225564313,F,2022-07-02,pending,43837.67,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+3413123,zhao4724,zhao4724@mail.cn,88,13122274242,M,2024-07-11,active,15242.06,SG,normal,-,accept,全部字段符合校验规则的典型有效数据
+5722104,lucy5003,lucy5003@example.com,43,17164781619,M,2026-04-19,pending,16716.74,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5449438,chen2010,chen2010@demo.io,72,13814300635,F,2021-09-10,active,29198.13,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8718390,zhao3203,zhao3203@mail.cn,24,16989028172,M,2021-05-01,pending,7116.77,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+69951,john6239,john6239@demo.io,36,15596539051,M,2025-04-05,inactive,5128.67,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+567621,yuki9652,yuki9652@mail.cn,73,18316574428,F,2021-12-17,active,6679.21,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+1237113,ken1491,ken1491@mail.cn,25,17719169417,F,2019-08-07,pending,8920.42,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+6947011,validuser,validuser@example.com,twenty,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,age,reject,age 非数字
+4138430,ivan5404,ivan5404@test.org,20,19674893323,F,2026-01-12,active,48939.67,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8971298,lucy7910,lucy7910@demo.io,35,16167284176,M,2021-12-04,banned,24147.08,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+3424829,eva8952,eva8952@mail.cn,18,13864955143,F,2025-04-25,active,10770.77,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+2626553,li5422,li5422@mail.cn,49,13986767108,F,2022-08-02,inactive,43057.40,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3476774,mary4304,mary4304@mail.cn,24,15709073030,M,2019-09-07,active,48716.03,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+6679678,zoe7962,zoe7962@test.org,89,17276870415,M,2022-02-12,active,4184.00,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+8989288,ken8482,ken8482@mail.cn,27,17830501223,F,2025-12-04,active,6660.99,JP,normal,-,accept,全部字段符合校验规则的典型有效数据
+6613738,mary823,mary823@corp.net,19,15766896699,M,2021-11-14,active,3166.68,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+8813142,leo8473,leo8473@demo.io,72,13457293154,M,2020-09-17,active,45005.77,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+3137563,zoe934,zoe934@mail.cn,29,14506922201,F,2026-03-17,active,5049.09,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+4690843,validuser,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,ZZ,abnormal,country_code,reject,country_code 非法国家码
+3583886,,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,abnormal,username,reject,username 为空
+533057,eva8171,eva8171@test.org,52,19486881725,F,2018-10-19,active,16098.16,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1714939,wang9513,wang9513@test.org,52,15102824534,F,2026-02-20,active,45525.33,CA,normal,-,accept,全部字段符合校验规则的典型有效数据
+6489972,validuser,validuser@example.com,30,1900000000,M,2023-06-15,active,1000.00,CN,boundary,phone,reject,phone 仅 10 位
+8274396,eva1575,eva1575@test.org,36,16490785181,Other,2022-07-10,inactive,49917.45,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+5508149,alex3112,alex3112@example.com,76,17907289778,Other,2023-11-08,pending,49268.49,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+1494601,zhao5277,zhao5277@demo.io,66,19047541364,M,2023-01-15,active,27373.02,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4662692,sato9740,sato9740@corp.net,42,15031425784,F,2024-02-24,active,18683.70,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5661986,validuser,validuser@example.com,30,1900000000,M,2023-06-15,active,1000.00,CN,boundary,phone,reject,phone 仅 10 位
+4244251,wang7754,wang7754@demo.io,63,16634249595,F,2020-10-28,active,24700.53,KR,normal,-,accept,全部字段符合校验规则的典型有效数据
+257401,lucy1590,lucy1590@demo.io,58,13124629955,F,2022-11-30,active,8621.90,US,normal,-,accept,全部字段符合校验规则的典型有效数据
+5894050,lily2137,lily2137@corp.net,54,18945034294,M,2019-10-30,inactive,47105.87,CN,normal,-,accept,全部字段符合校验规则的典型有效数据
+4114103,validuser,validuser@example.com,30,13000000000,M,2023-06-15,active,1000.00,CN,boundary,phone,accept,phone 合法 11 位最小段位
+4113359,aaaaaaaaaaaaaaaaaaaaa,validuser@example.com,30,13800138000,M,2023-06-15,active,1000.00,CN,boundary,username,reject,"username 21 位,超过最大长度"
+3339570,lucy203,lucy203@mail.cn,28,18644796671,F,2018-09-07,active,33700.76,AU,normal,-,accept,全部字段符合校验规则的典型有效数据

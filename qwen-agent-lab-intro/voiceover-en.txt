@@ -1,0 +1,7 @@
+Meet Qwen Agent Lab, an AI agent that runs locally.
+One clean console brings together chat, agent workflows, document summaries, and CSV analysis.
+This is a real agent: it plans, calls tools, and shows every step live on the timeline.
+It includes exact calculation, live web search, and file reading, ready the moment you open it.
+Drop in a spreadsheet and it can summarize, extract data, and turn results into charts.
+Your data stays local. Your keys stay private.
+Qwen Agent Lab: local-first AI. Try it now.

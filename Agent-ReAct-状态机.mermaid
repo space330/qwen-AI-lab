@@ -1,0 +1,40 @@
+flowchart TD
+    START(["▶ runAgent · step=0 · toolSteps=[] · limitHit=false"]) --> D0{"iteration &lt; 5 ?"}
+
+    D0 -- "否 · 迭代用尽" --> PREP
+    D0 -- "是" --> CALL["Reason · callModel(working, tools)<br/>→ response { toolCalls, message }"]
+
+    CALL --> D1{"toolCalls &gt; 0 ?"}
+    D1 -- "否 · 模型给出答案" --> FNAT(["■ FINAL · truncated = false"])
+    D1 -- "是" --> ECHO["回填 assistant 消息(携带 tool_calls)"]
+
+    ECHO --> D2{"step ≥ 8 ?<br/>(maxToolSteps)"}
+    D2 -- "是" --> LIM["limitHit = true<br/>push ERROR(未执行) · break"]
+    LIM --> PREP
+    D2 -- "否" --> STEP["Act · step++ · emit tool_start<br/>tool = getTool(name)"]
+
+    STEP --> D3{"tool 存在 ?"}
+    D3 -- "否" --> UNK["emit tool_error: 未知工具<br/>push ERROR"]
+    D3 -- "是" --> D4{"tool.run(args, ctx) 成功 ?"}
+
+    D4 -- "是" --> OK["completed · emit tool_result<br/>push(result) · durationMs"]
+    D4 -- "否" --> ERR["status=error · emit tool_error<br/>push ERROR · 可恢复"]
+
+    OK  -. "↻ Observe · 回填结果，下一轮" .-> D0
+    ERR -. "↻ 回填错误，模型重试" .-> D0
+    UNK -. "↻ 回填，继续" .-> D0
+
+    PREP["reason = limitHit ? tool_step_limit : iteration_limit<br/>push「停止调用工具」· callModel(tools = null)"] --> FF(["■ FINAL · truncated = true · 强制收束"])
+
+    classDef term fill:#241608,stroke:#ffdca5,color:#ffdca5,stroke-width:2px;
+    classDef ok fill:#152012,stroke:#8fc06a,color:#cfe9b6,stroke-width:2px;
+    classDef err fill:#34160d,stroke:#d2603a,color:#eaa489,stroke-width:2px;
+    classDef proc fill:#241608,stroke:#d87408,color:#ffdca5,stroke-width:2px;
+    classDef dec fill:#2e1d0c,stroke:#d87408,color:#f2a327,stroke-width:2px;
+
+    class START term;
+    class FNAT ok;
+    class OK ok;
+    class FF,ERR,UNK,LIM err;
+    class CALL,ECHO,STEP,PREP proc;
+    class D0,D1,D2,D3,D4 dec;
