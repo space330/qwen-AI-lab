@@ -2,3 +2,19 @@
 node_modules/
 npm-debug.log*
 .DS_Store
+
+# Local server state and generated output
+server/data/
+renders/
+tmp/
+
+# Machine-specific / tooling-generated, not for version control
+.superpowers/
+.claude/launch.json
+
+# Standalone intro/promo project generated media and cache
+qwen-agent-lab-intro/node_modules/
+qwen-agent-lab-intro/renders/
+qwen-agent-lab-intro/audio/
+qwen-agent-lab-intro/.hyperframes/
+qwen-agent-lab-intro/*.wav
