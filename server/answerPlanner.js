@@ -19,7 +19,9 @@ const chartTypes = {
 export function planAnswer({ mode = "chat", input = "", file = null }) {
   const text = `${mode} ${input} ${file?.name || ""} ${file?.type || ""}`.toLowerCase();
   const taskType = detectTaskType({ text, mode, file });
-  const chartType = detectChartType({ text, taskType, file });
+  // Chat mode is tightened (V2.0): plain conversational answers never carry
+  // charts. Charts remain available for document / csv / agent modes.
+  const chartType = mode === "chat" ? chartTypes.none : detectChartType({ text, taskType, file });
   const shouldUseChart = chartType !== chartTypes.none;
   const responseFormat = detectResponseFormat(taskType);
 
