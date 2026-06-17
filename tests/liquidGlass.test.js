@@ -6,7 +6,9 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const stylesPath = path.join(__dirname, "..", "src", "styles.css");
-const styles = fs.readFileSync(stylesPath, "utf8");
+// Normalize CRLF→LF so the contract holds regardless of git's autocrlf
+// checkout behavior (the multi-line selector assertions match on "\n").
+const styles = fs.readFileSync(stylesPath, "utf8").replace(/\r\n/g, "\n");
 
 function selectorBlocks(selector) {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
