@@ -11,6 +11,14 @@ export const icons = {
   file: icon("M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6"),
   panel: icon("M4 4h16v16H4z M15 4v16"),
   menu: icon("M4 6h16 M4 12h16 M4 18h16"),
+  plus: icon("M12 5v14 M5 12h14"),
+  search: icon("M21 21l-4.35-4.35 M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"),
+  globe: icon("M12 2A10 10 0 1 0 12 22 A10 10 0 1 0 12 2z M2 12h20 M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"),
+  history: icon("M3 12a9 9 0 1 0 3-6.7 M3 4v5h5 M12 7v5l3 2"),
+  edit: icon("M12 20h9 M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4z"),
+  trash: icon("M3 6h18 M8 6V4h8v2 M19 6l-1 15H6L5 6 M10 11v6 M14 11v6"),
+  download: icon("M12 3v12 M7 10l5 5 5-5 M5 21h14"),
+  close: icon("M18 6 6 18 M6 6l12 12"),
 };
 
 function icon(path) {

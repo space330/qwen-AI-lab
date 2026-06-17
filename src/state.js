@@ -1,76 +1,88 @@
-const STORAGE_KEY = "qwen-agent-lab-ui-state-v6";
+const UI_STORAGE_KEY = "qwen-agent-lab-ui-state-v13";
+const LEGACY_STORAGE_KEY = "qwen-agent-lab-ui-state-v12";
 
-const initialMessages = [
-  {
-    id: createId(),
-    role: "user",
-    title: "用户输入",
-    time: "10:24:15",
-    content:
-      "请分析一份文本或 CSV 文件，并用结构化方式输出摘要、关键发现、结论和下一步建议。",
-  },
-  {
-    id: createId(),
-    role: "assistant",
-    title: "AI 输出",
-    time: "10:24:39",
-    content:
-      "当前为前端界面预览版本。后续接入 Qwen 后端后，这里会展示真实模型回复，并保持统一、可复制、可编辑的结构化格式。",
-  },
-];
+// Sidebar rail bounds — kept in sync with main.js drag clamp and CSS --left-width.
+const LEFT_WIDTH_MIN = 72;
+const LEFT_WIDTH_MAX = 200;
 
 export const defaultState = {
   mode: "chat",
+  webSearch: false,
   projectName: "Qwen Agent Lab",
-  currentModel: "Qwen",
+  currentModel: "qwen3.7-max",
   apiStatus: "未连接",
-  leftWidth: 178,
+  leftWidth: 150,
   rightWidth: 260,
   inputText: "",
   uploadedFile: null,
   filePreviewVisible: false,
   generatedResult: "",
-  messages: initialMessages,
-  toolSteps: [
-    { id: "read", label: "文件读取器", status: "waiting", time: "--:--" },
-    { id: "analyze", label: "内容分析", status: "waiting", time: "--:--" },
-    { id: "format", label: "结果格式化", status: "waiting", time: "--:--" },
-  ],
+  messages: [],
+  conversations: [],
+  currentConversationId: null,
+  conversationDrawerOpen: false,
+  conversationSearch: "",
+  profilePanelOpen: false,
+  profile: null,
+  storageKind: "uninitialized",
+  visibleMessageLimit: 60,
+  models: [],
+  callLog: [],
+  modelProbeResult: null,
+  // Runtime-only: the welcome layer is shown when opening /app and can be
+  // dismissed without affecting conversations or persisted UI preferences.
+  welcomeVisible: true,
+  // Export mode (V2.1): runtime-only, never persisted. selectedExportIds tracks
+  // which message cards the user has ticked for HTML/PDF export.
+  exportModeActive: false,
+  selectedExportIds: new Set(),
 };
 
-export function loadState() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return structuredClone(defaultState);
-    return { ...structuredClone(defaultState), ...JSON.parse(raw) };
-  } catch {
-    return structuredClone(defaultState);
-  }
+export function loadState(storage = globalThis.localStorage) {
+  const current = readJson(storage, UI_STORAGE_KEY) || {};
+  const legacy = readJson(storage, LEGACY_STORAGE_KEY) || {};
+  const saved = { ...legacy, ...current };
+  return {
+    ...structuredClone(defaultState),
+    mode: saved.mode || defaultState.mode,
+    webSearch: typeof saved.webSearch === "boolean" ? saved.webSearch : defaultState.webSearch,
+    projectName: saved.projectName || defaultState.projectName,
+    currentModel: saved.currentModel || defaultState.currentModel,
+    // Width prefs are read only from the current key so the slimmer rail
+    // default takes effect once (legacy oversized widths are not inherited).
+    leftWidth: clampLeftWidth(Number(current.leftWidth) || defaultState.leftWidth),
+    rightWidth: Number(current.rightWidth) || defaultState.rightWidth,
+    currentConversationId: saved.currentConversationId || null,
+  };
 }
 
-export function saveState(state) {
+export function clampLeftWidth(value) {
+  return Math.min(Math.max(Number(value) || LEFT_WIDTH_MIN, LEFT_WIDTH_MIN), LEFT_WIDTH_MAX);
+}
+
+export function saveState(state, storage = globalThis.localStorage) {
   const compact = {
     mode: state.mode,
+    webSearch: state.webSearch,
     projectName: state.projectName,
     currentModel: state.currentModel,
-    apiStatus: state.apiStatus,
     leftWidth: state.leftWidth,
     rightWidth: state.rightWidth,
-    uploadedFile: state.uploadedFile,
-    filePreviewVisible: state.filePreviewVisible,
-    generatedResult: state.generatedResult,
-    messages: state.messages.slice(-30),
-    toolSteps: state.toolSteps,
+    currentConversationId: state.currentConversationId,
   };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(compact));
+  storage?.setItem?.(UI_STORAGE_KEY, JSON.stringify(compact));
 }
 
-export function resetState() {
-  localStorage.removeItem(STORAGE_KEY);
+export function resetState(storage = globalThis.localStorage) {
+  storage?.removeItem?.(UI_STORAGE_KEY);
   return structuredClone(defaultState);
 }
 
-function createId() {
-  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
-  return `id-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+function readJson(storage, key) {
+  try {
+    const raw = storage?.getItem?.(key);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
 }
