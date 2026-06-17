@@ -61,3 +61,28 @@ test("formatSuccess extracts chartSpec.data from table.chart-data in the chart s
     ],
   });
 });
+
+test("formatSuccess falls back to whole-document chart-data when the placeholder sits outside a section", () => {
+  // Agent-mode models sometimes emit the chart table + div after the last
+  // </section>; the extractor must still find the data.
+  const response = formatSuccess({
+    requestId: "test-request",
+    mode: "agent",
+    model: "qwen-max",
+    answerPlan: { chart_type: "bar" },
+    content: `
+      <section class="section" id="jie-lun"><h2>结论</h2><p>华东最高。</p></section>
+      <table class="chart-data">
+        <thead><tr><th>地区</th><th>销量</th></tr></thead>
+        <tbody><tr><td>华东</td><td>590</td></tr><tr><td>华北</td><td>380</td></tr></tbody>
+      </table>
+      <div id="chart1"></div>
+    `,
+  });
+
+  assert.equal(response.data.chartSpec.chartType, "bar");
+  assert.deepEqual(response.data.chartSpec.data, [
+    { 地区: "华东", 销量: 590 },
+    { 地区: "华北", 销量: 380 },
+  ]);
+});
