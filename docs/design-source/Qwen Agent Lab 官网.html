@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Qwen Agent Lab — 官网</title>
+<link rel="stylesheet" href="./colors_and_type.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-ui);
+    color: var(--brown-0);
+    background: var(--bg-woodgrain);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  /* ============================================================
+     Glass primitive
+     ============================================================ */
+  .glass {
+    background:
+      radial-gradient(circle at 6% 4%, rgba(255,255,255,0.28), transparent 30%),
+      var(--glass-tint);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-highlight), var(--glass-shadow);
+    border-radius: var(--radius);
+  }
+
+  /* ============================================================
+     Top navigation — frosted glass, fixed
+     ============================================================ */
+  .nav {
+    position: fixed; inset: 14px 14px auto 14px; z-index: 60;
+    display: flex; align-items: center; gap: 28px;
+    height: 60px; padding: 0 22px;
+    border-radius: var(--radius-pill);
+    background:
+      radial-gradient(circle at 4% 0%, rgba(255,255,255,0.34), transparent 40%),
+      var(--glass-tint);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-highlight), var(--glass-shadow);
+  }
+  .nav .wordmark {
+    font-family: var(--font-wordmark); font-weight: 900; font-size: 22px;
+    color: #d87408; line-height: 1;
+    text-shadow: 0 1px 0 rgba(255,248,232,0.85), 0 2px 8px rgba(181,95,12,0.18);
+  }
+  .nav-links { display: flex; align-items: center; gap: 26px; margin-left: 8px; }
+  .nav-links a {
+    text-decoration: none; color: var(--brown-1); font-weight: 700; font-size: 14px;
+    padding: 7px 4px; position: relative; transition: color .16s ease;
+  }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 4px; right: 4px; bottom: 2px; height: 2px;
+    background: var(--accent); border-radius: 2px; transform: scaleX(0);
+    transform-origin: left; transition: transform .2s ease;
+  }
+  .nav-links a:hover { color: var(--brown-0); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-spacer { flex: 1; }
+  .nav-status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-weight: 700; color: var(--brown-2);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--status-ok);
+    box-shadow: 0 0 0 3px rgba(47,164,90,0.16); }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    height: 44px; padding: 0 22px; border: 0; cursor: pointer;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-ui); font-weight: 800; font-size: 15px;
+    text-decoration: none; transition: transform .14s ease, box-shadow .16s ease, background .16s ease;
+  }
+  .btn svg { width: 19px; height: 19px; }
+  .btn-primary {
+    background: var(--bg-send); color: #fff;
+    box-shadow: var(--glass-highlight), var(--shadow-send);
+  }
+  .btn-primary:hover { box-shadow: var(--glass-highlight), 0 8px 20px rgba(177,92,16,0.34); transform: translateY(-1px); }
+  .btn-primary:active { background: linear-gradient(135deg, #cf6406, #e1900f); transform: translateY(0); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: var(--glass-blur-soft); -webkit-backdrop-filter: var(--glass-blur-soft);
+    border: 1px solid var(--glass-border); color: var(--brown-0);
+    box-shadow: var(--glass-highlight);
+  }
+  .btn-ghost:hover { background: rgba(255,235,196,0.7); transform: translateY(-1px); }
+  .nav .btn { height: 40px; }
+
+  /* ============================================================
+     HERO — the website sits "in front of" the console
+     ============================================================ */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: grid; place-items: center;
+    padding: 150px 24px 90px;
+    overflow: hidden;
+  }
+
+  /* Backdrop: a faint, blurred recreation of the Agent Lab console */
+  .console-ghost {
+    position: absolute; inset: -6% -4% auto -4%; top: 92px; height: 78vh;
+    filter: blur(4px) saturate(1.1);
+    opacity: 0.42;
+    transform: perspective(1600px) rotateX(5deg) scale(1.02);
+    transform-origin: top center;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 92%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 92%);
+  }
+  .cg-shell {
+    height: 100%; margin: 0 auto; max-width: 1500px;
+    display: grid; grid-template-columns: 178px 1fr 280px; grid-template-rows: 64px 1fr;
+    gap: 8px; padding: 8px;
+  }
+  .cg-bar {
+    grid-column: 1 / 4; display: flex; align-items: center; gap: 26px; padding: 0 20px;
+    border-radius: var(--radius); border: 1px solid var(--glass-border);
+    background: var(--glass-tint); box-shadow: var(--glass-highlight);
+  }
+  .cg-rail, .cg-center, .cg-right {
+    border-radius: var(--radius); border: 1px solid var(--glass-border);
+    background: var(--glass-tint); box-shadow: var(--glass-highlight);
+  }
+  .cg-rail { padding: 16px 12px; display: flex; flex-direction: column; gap: 10px; }
+  .cg-item { height: 44px; border-radius: var(--radius-sm); background: rgba(255,255,255,0.34); }
+  .cg-item.active { background: rgba(255,236,205,0.85); box-shadow: var(--shadow-press); }
+  .cg-center { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .cg-card { border-radius: var(--radius-lg); background: var(--glass-tint-2); height: 92px; border: 1px solid rgba(255,255,255,0.4); }
+  .cg-card.short { height: 64px; }
+  .cg-block { height: 12px; border-radius: 6px; background: rgba(154,115,82,0.28); }
+  .cg-pill { display:inline-block; width: 72px; height: 26px; border-radius: 999px; background: rgba(238,139,23,0.4); }
+
+  /* Soft wash so the hero text stays legible over the ghost */
+  .hero-wash {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(60% 55% at 50% 46%, rgba(255,250,242,0.78), rgba(255,250,242,0.22) 60%, transparent 78%),
+      radial-gradient(circle at 4% 96%, rgba(234,151,45,0.18), transparent 30%);
+  }
+
+  /* ---- The liquid-glass NAMEPLATE — visual focal point ---- */
+  .hero-inner { position: relative; z-index: 5; text-align: center; max-width: 1000px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px; margin-bottom: 26px;
+    padding: 8px 18px; border-radius: var(--radius-pill);
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: var(--glass-blur-soft); -webkit-backdrop-filter: var(--glass-blur-soft);
+    border: 1px solid var(--glass-border); box-shadow: var(--glass-highlight);
+    font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: var(--brown-1);
+  }
+  .eyebrow .ey-mark { font-family: var(--font-wordmark); font-weight: 900; color: #d87408; font-size: 15px; }
+
+  .nameplate {
+    position: relative; display: inline-block;
+    padding: 40px 64px 46px;
+    border-radius: var(--radius-lg);
+    background:
+      linear-gradient(150deg, rgba(255,255,255,0.42), rgba(255,240,219,0.18)),
+      radial-gradient(circle at 18% 12%, rgba(255,255,255,0.5), transparent 42%);
+    backdrop-filter: blur(24px) saturate(1.7);
+    -webkit-backdrop-filter: blur(24px) saturate(1.7);
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow:
+      inset 0 2px 2px rgba(255,255,255,0.85),
+      inset 0 -2px 6px rgba(181,95,12,0.12),
+      0 30px 70px rgba(91,55,23,0.26);
+    overflow: hidden;
+  }
+  /* moving glossy sheen across the plate */
+  .nameplate::before {
+    content: ""; position: absolute; top: 0; left: -60%; width: 50%; height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-18deg);
+    animation: sheen 6.5s ease-in-out 1.2s infinite;
+  }
+  @keyframes sheen { 0% { left: -60%; } 38%, 100% { left: 160%; } }
+
+  .product-name {
+    margin: 0; line-height: 0.96;
+    font-weight: 900; letter-spacing: -0.02em;
+    font-size: clamp(48px, 9vw, 132px);
+    /* molded-glass lettering */
+    color: rgba(255,251,243,0.34);
+    -webkit-text-stroke: 1.4px rgba(255,255,255,0.78);
+    text-shadow:
+      0 1px 0 rgba(255,255,255,0.7),
+      0 -1px 1px rgba(181,95,12,0.22),
+      0 14px 30px rgba(91,55,23,0.22);
+  }
+  .product-name .accent {
+    color: rgba(238,139,23,0.42);
+    -webkit-text-stroke: 1.4px rgba(255,236,205,0.9);
+  }
+  .name-sub {
+    margin: 18px 0 0; font-size: clamp(15px, 1.6vw, 19px); font-weight: 800;
+    letter-spacing: 0.22em; color: var(--brown-2); text-transform: none;
+  }
+
+  .hero-tagline {
+    margin: 38px auto 0; max-width: 680px;
+    font-size: clamp(17px, 2vw, 22px); line-height: 1.7; font-weight: 500;
+    color: var(--brown-1); text-wrap: pretty;
+  }
+  .hero-tagline b { color: var(--brown-0); font-weight: 800; }
+  .hero-cta { margin-top: 38px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .hero-meta { margin-top: 40px; display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; color: var(--brown-2); font-size: 13px; font-weight: 700; }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-meta i.tick { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  /* ============================================================
+     SECTIONS
+     ============================================================ */
+  section.band { position: relative; padding: 96px 24px; }
+  .wrap { max-width: 1160px; margin: 0 auto; }
+  .section-head { text-align: center; max-width: 660px; margin: 0 auto 56px; }
+  .kicker { font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: var(--accent-strong); text-transform: uppercase; }
+  .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 900; color: #2a170d; margin: 14px 0 14px; letter-spacing: -0.01em; }
+  .section-desc { font-size: 17px; line-height: 1.7; color: var(--brown-1); margin: 0; }
+
+  /* Mode cards */
+  .modes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .mode-card { padding: 26px 24px 28px; border-radius: var(--radius-lg); transition: transform .18s ease, box-shadow .2s ease; }
+  .mode-card:hover { transform: translateY(-5px); box-shadow: var(--glass-highlight), var(--glass-shadow-lg); }
+  .mode-ico {
+    width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center;
+    color: var(--accent-strong);
+    background: rgba(255,255,255,0.55); border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-highlight);
+    margin-bottom: 18px;
+  }
+  .mode-ico svg { width: 26px; height: 26px; }
+  .mode-card h3 { font-size: 18px; font-weight: 900; margin: 0 0 8px; color: #2a170d; }
+  .mode-card p { font-size: 14px; line-height: 1.7; color: var(--brown-1); margin: 0; }
+  .mode-card .zh { font-size: 12px; font-weight: 700; color: var(--brown-2); letter-spacing: 0.08em; margin-top: 14px; display: block; }
+
+  /* Structured output showcase */
+  .showcase { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; }
+  .showcase-copy h2 { font-size: clamp(26px, 3.4vw, 40px); font-weight: 900; color: #2a170d; margin: 14px 0 18px; letter-spacing: -0.01em; }
+  .showcase-copy p { font-size: 16px; line-height: 1.75; color: var(--brown-1); margin: 0 0 26px; }
+  .feat-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .feat-list li { display: flex; gap: 13px; align-items: flex-start; font-size: 15px; line-height: 1.55; color: var(--brown-0); font-weight: 600; }
+  .feat-list .chk {
+    flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--note-ok-bg); color: var(--status-ok); border: 1px solid var(--note-ok-border);
+  }
+  .feat-list .chk svg { width: 14px; height: 14px; }
+
+  /* Mock structured answer card */
+  .answer-card { padding: 26px 28px 30px; border-radius: var(--radius-lg); }
+  .answer-top { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; margin-bottom: 18px; border-bottom: 1px dashed rgba(128,86,48,0.32); }
+  .answer-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #ffdca5, #d58526); border: 1px solid rgba(255,255,255,0.5); box-shadow: var(--glass-highlight); display:grid; place-items:center; color:#fff; }
+  .answer-avatar svg { width: 20px; height: 20px; }
+  .answer-top .who { font-weight: 900; color: var(--accent-strong); font-size: 15px; }
+  .answer-top .time { margin-left: auto; font-size: 12px; color: var(--brown-2); font-weight: 700; }
+  .answer-card h4 { font-size: 13px; font-weight: 900; color: #7d450c; margin: 16px 0 8px; letter-spacing: 0.02em; }
+  .answer-card h4:first-of-type { margin-top: 0; }
+  .answer-card p { font-size: 14px; line-height: 1.7; color: #20140d; margin: 0; }
+  .answer-card ol { margin: 6px 0 0; padding-left: 20px; }
+  .answer-card ol li { font-size: 14px; line-height: 1.8; color: #20140d; }
+  .answer-note {
+    margin-top: 16px; padding: 12px 14px; border-radius: var(--radius-sm);
+    background: var(--note-ok-bg); border: 1px solid var(--note-ok-border);
+    color: var(--note-ok-text); font-size: 13px; font-weight: 700;
+  }
+
+  /* CTA band */
+  .cta-band { padding: 96px 24px 120px; }
+  .cta-glass {
+    max-width: 980px; margin: 0 auto; text-align: center;
+    padding: 64px 40px; border-radius: var(--radius-lg);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255,255,255,0.4), transparent 50%),
+      var(--glass-tint);
+    backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-highlight), var(--glass-shadow-lg);
+  }
+  .cta-glass h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 900; color: #2a170d; margin: 0 0 16px; letter-spacing: -0.01em; }
+  .cta-glass p { font-size: 17px; color: var(--brown-1); margin: 0 0 32px; line-height: 1.6; }
+
+  /* Footer */
+  footer { padding: 40px 24px 56px; }
+  .foot {
+    max-width: 1160px; margin: 0 auto; display: flex; align-items: center; gap: 18px;
+    flex-wrap: wrap; padding: 22px 28px; border-radius: var(--radius);
+    background: var(--glass-tint-rail);
+    backdrop-filter: var(--glass-blur-soft); -webkit-backdrop-filter: var(--glass-blur-soft);
+    border: 1px solid var(--glass-border); box-shadow: var(--glass-highlight);
+  }
+  .foot .wordmark { font-family: var(--font-wordmark); font-weight: 900; font-size: 20px; color: #d87408; }
+  .foot .copy { color: var(--brown-2); font-size: 13px; font-weight: 600; }
+  .foot .links { margin-left: auto; display: flex; gap: 22px; }
+  .foot .links a { color: var(--brown-1); text-decoration: none; font-size: 13px; font-weight: 700; }
+  .foot .links a:hover { color: var(--accent-strong); }
+
+  /* Entrance animation */
+  .reveal { opacity: 0; transform: translateY(22px); animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  .d1 { animation-delay: .05s; } .d2 { animation-delay: .18s; } .d3 { animation-delay: .32s; }
+  .d4 { animation-delay: .46s; } .d5 { animation-delay: .6s; } .d6 { animation-delay: .74s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { animation: none; opacity: 1; transform: none; }
+    .nameplate::before { animation: none; }
+  }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .modes-grid { grid-template-columns: repeat(2, 1fr); }
+    .showcase { grid-template-columns: 1fr; gap: 28px; }
+    .console-ghost { display: none; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 560px) {
+    .modes-grid { grid-template-columns: 1fr; }
+    .nameplate { padding: 28px 28px 32px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav reveal d1" data-screen-label="nav">
+    <span class="wordmark">Lysandra</span>
+    <div class="nav-links">
+      <a href="#modes">五种模式</a>
+      <a href="#output">结构化输出</a>
+      <a href="#about">关于</a>
+    </div>
+    <div class="nav-spacer"></div>
+    <span class="nav-status"><i class="dot"></i> API 正常</span>
+    <a href="#about" class="btn btn-primary">进入控制台</a>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero" data-screen-label="hero">
+
+    <!-- blurred console behind the glass: the website sits "in front of" the app -->
+    <div class="console-ghost" aria-hidden="true">
+      <div class="cg-shell">
+        <div class="cg-bar">
+          <span class="cg-pill" style="background:rgba(216,116,8,0.5)"></span>
+          <span class="cg-block" style="width:80px"></span>
+          <span class="cg-block" style="width:60px"></span>
+          <span class="cg-block" style="width:90px;margin-left:auto"></span>
+          <span class="cg-pill"></span>
+        </div>
+        <div class="cg-rail">
+          <div class="cg-item active"></div>
+          <div class="cg-item"></div>
+          <div class="cg-item"></div>
+          <div class="cg-item"></div>
+          <div class="cg-item"></div>
+        </div>
+        <div class="cg-center">
+          <div class="cg-card short"></div>
+          <div class="cg-card"></div>
+          <div class="cg-card"></div>
+          <div class="cg-card short"></div>
+        </div>
+        <div class="cg-right" style="padding:16px;display:flex;flex-direction:column;gap:12px">
+          <span class="cg-block" style="width:70%"></span>
+          <span class="cg-block" style="width:90%"></span>
+          <span class="cg-block" style="width:60%"></span>
+          <span class="cg-block" style="width:80%"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-wash" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <span class="eyebrow reveal d2"><i class="dot"></i> 基于 Qwen 大模型 · <span class="ey-mark">Lysandra</span></span>
+
+      <div class="nameplate reveal d3">
+        <h1 class="product-name">Qwen <span class="accent">Agent</span> Lab</h1>
+        <p class="name-sub">让数据自己说话</p>
+      </div>
+
+      <p class="hero-tagline reveal d4">
+        一个能<b>自动分析数据</b>的轻量 AI agent。投喂文本、Markdown 或 CSV，
+        它会返回干净、<b>结构化、可复制可编辑</b>的图表级答案。
+      </p>
+
+      <div class="hero-cta reveal d5">
+        <a href="#about" class="btn btn-primary">免费开始使用
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="#output" class="btn btn-ghost">看看它的输出</a>
+      </div>
+
+      <div class="hero-meta reveal d6">
+        <span><i class="tick"></i> 个人自用 · 轻办公</span>
+        <span><i class="tick"></i> 文本 / Markdown / CSV</span>
+        <span><i class="tick"></i> 桌面端控制台</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== MODES ===================== -->
+  <section class="band" id="modes" data-screen-label="modes">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">FIVE MODES</span>
+        <h2 class="section-title">一个工作台，五种模式</h2>
+        <p class="section-desc">从随手对话到 CSV 数据分析，模式切换驱动整个控制台 —— 同一个统一输出容器，始终保持结构化。</p>
+      </div>
+      <div class="modes-grid">
+        <article class="glass mode-card">
+          <div class="mode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg></div>
+          <h3>对话模式</h3>
+          <p>随手提问，得到带摘要、结构化回答与下一步建议的清晰回复。</p>
+          <span class="zh">Chat</span>
+        </article>
+        <article class="glass mode-card">
+          <div class="mode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4m0 4a4 4 0 0 0-4 4v4h8v-4a4 4 0 0 0-4-4Z"></path><path d="M6 16H4a2 2 0 0 1-2-2v-2m16 4h2a2 2 0 0 0 2-2v-2M9 13h.01M15 13h.01"></path></svg></div>
+          <h3>Agent 模式</h3>
+          <p>把任务交给它自动拆解、分析并整合，输出可执行的结构化结果。</p>
+          <span class="zh">Agent</span>
+        </article>
+        <article class="glass mode-card">
+          <div class="mode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6 M8 13h8 M8 17h6"></path></svg></div>
+          <h3>文档总结</h3>
+          <p>投喂长文本或 Markdown，提炼核心摘要、关键发现与结论。</p>
+          <span class="zh">Document</span>
+        </article>
+        <article class="glass mode-card">
+          <div class="mode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M4 9h16 M4 15h16 M10 9v12"></path></svg></div>
+          <h3>CSV 分析</h3>
+          <p>上传表格，自动完成结构解析、字段统计与趋势，生成图表级答案。</p>
+          <span class="zh">CSV</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STRUCTURED OUTPUT ===================== -->
+  <section class="band" id="output" data-screen-label="output">
+    <div class="wrap showcase">
+      <div class="showcase-copy">
+        <span class="kicker">STRUCTURE IS THE BRAND</span>
+        <h2>每个回答都有固定骨架</h2>
+        <p>不是一大段文字，而是摘要、关键发现、结构化正文、结论与下一步 —— 干净、可复制、可编辑、可保存。需要图表？它会从模型输出的数据表直接渲染折线、柱状、饼图与散点。</p>
+        <ul class="feat-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>统一输出容器，结构永远一致</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>一键复制 / 编辑 / 保存生成结果</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>从数据表直接渲染五类图表</li>
+        </ul>
+      </div>
+
+      <div class="glass answer-card">
+        <div class="answer-top">
+          <div class="answer-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M4 9h16 M10 9v12"></path></svg></div>
+          <span class="who">AI 输出</span>
+          <span class="time">19:41:05</span>
+        </div>
+        <h4>摘要</h4>
+        <p>已完成「月度销售趋势.csv」基础结构解析 —— 4 个字段、12 行数据、3 个数值列。</p>
+        <h4>关键发现</h4>
+        <ol>
+          <li>三个产品全年均呈稳定上升趋势，产品 A 增速最快。</li>
+          <li>无空值字段，可直接进入正式分析。</li>
+        </ol>
+        <h4>下一步</h4>
+        <p>可继续做趋势、均值、极值与异常值分析，或导出图表。</p>
+        <div class="answer-note">结果可复制、可编辑、可保存 —— 已同步至文件预览区。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta-band" id="about" data-screen-label="cta">
+    <div class="cta-glass">
+      <h2>把分析交给 <span style="color:var(--accent-strong)">Lysandra</span></h2>
+      <p>一个干净、温暖的桌面工作台，专为个人自用与轻办公而生。</p>
+      <div class="hero-cta" style="margin-top:0">
+        <a href="#" class="btn btn-primary">进入控制台
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="https://github.com/space330/qwen-AI-lab" class="btn btn-ghost" target="_blank" rel="noopener">查看源码</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer data-screen-label="footer">
+    <div class="foot">
+      <span class="wordmark">Lysandra</span>
+      <span class="copy">Qwen Agent Lab · 基于 Qwen 大模型的数据分析 agent</span>
+      <div class="links">
+        <a href="#modes">模式</a>
+        <a href="#output">输出</a>
+        <a href="https://github.com/space330/qwen-AI-lab" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
