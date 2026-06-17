@@ -428,7 +428,7 @@ body.landing-active {
   .landing-page.is-launching .landing-nav,
   .landing-page.is-launching .landing-band,
   .landing-page.is-launching .landing-hero-inner,
-  .landing-page.is-launching .landing-console-ghost {
+  .landing-page.is-launching .landing-footer {
     animation: none;
   }
 
