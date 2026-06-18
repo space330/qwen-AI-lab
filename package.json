@@ -1,7 +1,10 @@
 {
-  "name": "qwen-agent-lab",
+  "name": "@lysendra/qwen-agent-lab",
   "version": "2.2.0",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "node server/index.js",
     "dev": "node server/index.js",
