@@ -1,7 +1,6 @@
 {
   "name": "qwen-agent-lab",
   "version": "2.2.0",
-  "private": true,
   "type": "module",
   "scripts": {
     "start": "node server/index.js",
