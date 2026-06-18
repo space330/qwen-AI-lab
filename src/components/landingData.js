@@ -37,7 +37,7 @@ export const RUN_CONFIG = [
 
 // Real repo facts — drive the count-up stat counters.
 export const ENGINEERING_STATS = [
-  { key: "tests", value: 108, label: "自动化测试", suffix: "" },
+  { key: "tests", value: 120, label: "自动化测试", suffix: "" },
   { key: "tools", value: 10, label: "Agent 工具", suffix: "" },
   { key: "toolCategories", value: 5, label: "工具类别", suffix: "" },
   { key: "chartTypes", value: 5, label: "图表类型", suffix: "" },

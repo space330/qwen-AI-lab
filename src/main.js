@@ -2,6 +2,7 @@ import { loadState, saveState, clampLeftWidth } from "./state.js";
 import { renderApp, streamingPlainText } from "./components/render.js";
 import { buildStandaloneDocument, buildReportTitle, escapeHtml as escapeReportHtml } from "./utils/exportReport.js";
 import { renderLanding } from "./components/landing.js";
+import { initLandingInteractive } from "./components/landingInteractive.js";
 import { initLandingMotion } from "./components/landingMotion.js";
 import { createConversationRepository } from "./data/conversationRepository.js";
 import {
@@ -34,6 +35,7 @@ let lastMessageTimestamp = 0;
 let activeAgentRequestId = null;
 // Disconnect handle for the landing IntersectionObservers; cleared before every re-render.
 let landingMotionCleanup = null;
+let landingInteractiveCleanup = null;
 state.currentView = viewForPath(window.location.pathname);
 
 bootstrap();
@@ -73,6 +75,10 @@ function render() {
   if (landingMotionCleanup) {
     landingMotionCleanup();
     landingMotionCleanup = null;
+  }
+  if (landingInteractiveCleanup) {
+    landingInteractiveCleanup();
+    landingInteractiveCleanup = null;
   }
   document.body.classList.toggle("landing-active", state.currentView === "home");
   app.innerHTML = state.currentView === "home" ? renderLanding(state) : renderApp(state);
@@ -199,17 +205,20 @@ function bindLandingEvents() {
     link.addEventListener("click", openConsoleFromLanding);
   });
   landingMotionCleanup = initLandingMotion(app);
+  landingInteractiveCleanup = initLandingInteractive(app);
 }
 
 function openConsoleFromLanding(event) {
   if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
   const landing = app.querySelector(".landing-page");
+  const transition = event.currentTarget?.dataset?.transition || "zoom-fluid";
   const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
   if (prefersReducedMotion) {
     navigateToConsole();
     return;
   }
+  if (landing) landing.dataset.transition = transition;
   landing?.classList.add("is-launching");
   window.setTimeout(navigateToConsole, 280);
 }

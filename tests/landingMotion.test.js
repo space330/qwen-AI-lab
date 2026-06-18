@@ -2,9 +2,12 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   collectReveals,
+  countupValue,
   revealOnIntersect,
+  parallaxOffset,
   prefersReducedMotion,
   initLandingMotion,
+  tiltFromPointer,
 } from "../src/components/landingMotion.js";
 
 test("revealOnIntersect reveals and unobserves only intersecting targets", () => {
@@ -71,4 +74,33 @@ test("initLandingMotion observes each reveal node when IntersectionObserver exis
   const cleanup = initLandingMotion(root, { win });
   assert.equal(observed.length, 3);
   cleanup();
+});
+
+test("parallaxOffset maps scroll progress to a bounded signed offset", () => {
+  assert.equal(parallaxOffset({ scrollY: 0, speed: 0.2 }), 0);
+  assert.equal(parallaxOffset({ scrollY: 300, speed: 0.2 }), 60);
+  assert.equal(parallaxOffset({ scrollY: 10000, speed: 0.5, max: 120 }), 120);
+  assert.equal(parallaxOffset({ scrollY: -10000, speed: 0.5, max: 120 }), -120);
+});
+
+test("tiltFromPointer returns rotation variables from pointer position", () => {
+  assert.deepEqual(tiltFromPointer({ x: 50, y: 50, rect: { left: 0, top: 0, width: 100, height: 100 } }), {
+    rx: 0,
+    ry: 0,
+  });
+  assert.deepEqual(tiltFromPointer({ x: 100, y: 0, rect: { left: 0, top: 0, width: 100, height: 100 }, max: 10 }), {
+    rx: 10,
+    ry: 10,
+  });
+  assert.deepEqual(tiltFromPointer({ x: 0, y: 100, rect: { left: 0, top: 0, width: 100, height: 100 }, max: 10 }), {
+    rx: -10,
+    ry: -10,
+  });
+});
+
+test("countupValue interpolates and clamps numeric counters", () => {
+  assert.equal(countupValue({ from: 0, to: 108, progress: 0 }), 0);
+  assert.equal(countupValue({ from: 0, to: 108, progress: 0.5 }), 54);
+  assert.equal(countupValue({ from: 0, to: 108, progress: 2 }), 108);
+  assert.equal(countupValue({ from: 10, to: 0, progress: 0.25 }), 8);
 });

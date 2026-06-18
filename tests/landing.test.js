@@ -82,3 +82,51 @@ test("landing renders the five redesigned scenes with reveal hooks", () => {
   const ctas = html.match(/data-enter-console/g) || [];
   assert.ok(ctas.length >= 3, `expected >=3 console CTAs, got ${ctas.length}`);
 });
+
+test("landing renders the Qwen showcase browser, comparison sources, and cinematic hooks", () => {
+  const html = renderLanding({ currentModel: "qwen3.7-max", apiStatus: "正常" });
+
+  assert.match(html, /id="qwen-showcase"/);
+  assert.match(html, /qwen-model-browser/);
+  assert.match(html, /data-model="qwen3\.7-max"/);
+  assert.match(html, /data-model-detail/);
+  assert.match(html, /id="qwen-comparison"/);
+  assert.match(html, /data-source-id="llm-stats"/);
+  assert.match(html, /data-source-id="artificialanalysis"/);
+  assert.match(html, /class="qwen-engineering-stats"/);
+  assert.match(html, /data-counter="120"/);
+  assert.match(html, /data-parallax/);
+  assert.match(html, /data-tilt/);
+});
+
+test("landing splits the welcome showcase into twelve renderable scenes", () => {
+  const html = renderLanding({ currentModel: "qwen3.7-max", apiStatus: "正常" });
+  const scenes = html.match(/data-landing-scene="/g) || [];
+
+  assert.equal(scenes.length, 12);
+  [
+    "hero",
+    "status",
+    "qwen-flagship",
+    "qwen-runtime",
+    "qwen-model-browser",
+    "qwen-leaderboard",
+    "qwen-sources",
+    "capabilities",
+    "engineering-stats",
+    "output",
+    "workflow",
+    "cta",
+  ].forEach((scene) => assert.match(html, new RegExp(`data-landing-scene="${scene}"`)));
+});
+
+test("landing exposes varied lightweight transition hooks", () => {
+  const html = renderLanding({ currentModel: "qwen3.7-max", apiStatus: "正常" });
+
+  ["fade", "scale", "rise-soft", "flip-soft", "left", "right", "up"].forEach((variant) => {
+    assert.match(html, new RegExp(`data-reveal="${variant}"`));
+  });
+  assert.match(html, /class="[^"]*landing-stagger/);
+  assert.match(html, /data-transition="zoom-fluid"/);
+  assert.match(html, /data-transition="slide-up"/);
+});

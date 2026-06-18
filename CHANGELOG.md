@@ -102,3 +102,28 @@
 
 - 新增 `tests/liquidGlass.test.js`，固定关键玻璃层必须引用共享 tokens。
 - `npm.cmd test`：102/102 通过。
+
+---
+
+## [Unreleased] - 2026-06-17 · Welcome Qwen Showcase
+
+### 新增
+- 官网首页补齐 Qwen 能力展示区、模型浏览器、跨厂商来源化对比、工程能力统计与 Qwen 工程能力卡片。
+- 新增 `landingInteractive.js`，支持 Qwen 模型芯片切换与详情面板更新。
+- 扩展 `landingMotion.js`，支持视差、指针倾斜、计数器递增，并提供 reduced-motion 降级。
+
+### 验收
+- `node --test tests/landingMotion.test.js tests/landingInteractive.test.js tests/landing.test.js`：15/15 通过。
+- 工程统计同步到当前完整测试数：120。
+
+---
+
+## [Unreleased] - 2026-06-17 · Landing 12-Scene Motion Upgrade
+
+### 新增
+- 将官网首页展示叙事从原来的大块结构拆成 12 个显式 `data-landing-scene` 场景：hero、status、qwen flagship、runtime、model browser、leaderboard、sources、capabilities、engineering stats、output、workflow、cta。
+- 增加轻量转场钩子：`fade`、`scale`、`rise-soft`、`flip-soft`、`slide-up`、`zoom-fluid`，全部保持在 opacity/transform 范围内。
+- 入口按钮支持 `data-transition`，不同入口可触发不同进入控制台动画。
+
+### 验收
+- 新增 landing 渲染测试覆盖 12 个展示场景和多样转场钩子。
