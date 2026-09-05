@@ -3,6 +3,7 @@ import path from "node:path";
 import { config, projectRoot } from "./config.js";
 import { AppError, normalizeError } from "./errors.js";
 import { callQwen } from "./qwenClient.js";
+import { callDemoModel } from "./demoModel.js";
 import { buildMessages, buildAgentMessages, buildSummaryMessages, formatSuccess } from "./responseFormatter.js";
 import { planAnswer } from "./answerPlanner.js";
 import { MODEL_WHITELIST, isModelAllowed, resolveModel } from "./models.js";
@@ -33,9 +34,10 @@ app.get("/api/health", (req, res) => {
     success: true,
     status: "ok",
     service: "qwen-agent-lab",
+    demo: config.demoMode,
     api: {
-      provider: "qwen",
-      configured: Boolean(config.qwenApiKey),
+      provider: config.demoMode ? "demo" : "qwen",
+      configured: config.demoMode || Boolean(config.qwenApiKey),
       model: config.qwenModel,
       baseUrl: maskBaseUrl(config.qwenBaseUrl),
     },
@@ -66,10 +68,11 @@ app.post("/api/models/probe", async (req, res, next) => {
       });
     }
     const start = Date.now();
-    await callQwen({
+    await invokeModel({
       model: modelId,
       messages: [{ role: "user", content: "Hi" }],
       temperature: 0,
+      demoContext: { mode: "probe" },
     });
     res.json({ success: true, model: modelId, durationMs: Date.now() - start });
   } catch (error) {
@@ -107,6 +110,7 @@ app.post("/api/qwen/chat", async (req, res, next) => {
       requestId,
       mode: payload.mode,
       enableSearch: payload.webSearch,
+      demoContext: toDemoContext(payload),
     });
 
     res.json(
@@ -159,6 +163,7 @@ app.post("/api/qwen/conversation-summary", async (req, res, next) => {
       maxTokens: config.qwenSummaryMaxTokens,
       requestId,
       mode: "conversation-summary",
+      demoContext: { mode: "conversation-summary" },
     });
     res.json({
       success: true,
@@ -242,6 +247,7 @@ app.post("/api/qwen/chat/stream", async (req, res) => {
       requestId,
       mode: payload.mode,
       enableSearch: payload.webSearch,
+      demoContext: toDemoContext(payload),
       onDelta: (text) => {
         if (heartbeat) {
           clearInterval(heartbeat);
@@ -292,7 +298,12 @@ app.use((error, req, res, next) => {
 
 app.listen(config.port, "127.0.0.1", () => {
   console.log(`Qwen Agent Lab backend listening on http://127.0.0.1:${config.port}`);
-  console.log(`Qwen API configured: ${Boolean(config.qwenApiKey)}`);
+  if (config.demoMode) {
+    console.log("DEMO MODE: answers come from the local scripted demo model (no API key, no network).");
+    console.log("Tools, the agent loop and the confirmation gate all run for real. See docs/demo.md.");
+  } else {
+    console.log(`Qwen API configured: ${Boolean(config.qwenApiKey)}`);
+  }
 });
 
 function validateChatPayload(body) {
@@ -425,6 +436,13 @@ function decideFileUse({ mode, input, file }) {
   return { use: false, reason: "question_unrelated_to_file" };
 }
 
+// What the demo model needs to script a run: the user's actual question and
+// the actual uploaded file. Ignored entirely when demo mode is off.
+function toDemoContext(payload) {
+  if (!config.demoMode) return null;
+  return { mode: payload.mode, input: payload.input, file: payload.file };
+}
+
 function createRequestId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
   return `req-${Date.now()}-${Math.random().toString(16).slice(2)}`;
@@ -441,10 +459,20 @@ function resolveMaxTokens(payload) {
   return needsRoom ? config.qwenReportMaxTokens : config.qwenMaxTokens;
 }
 
-async function callQwenWithLog({ messages, model, maxTokens, requestId, mode, tools = null, onDelta = null, enableSearch = false }) {
+// Single model boundary. In demo mode (DEMO_MODE=1) the scripted local model
+// stands in for the Qwen API with an identical return shape, so every route,
+// the agent loop and the NDJSON stream stay on exactly one code path.
+function invokeModel({ messages, model, maxTokens, temperature, tools, onDelta, enableSearch, demoContext }) {
+  if (config.demoMode) {
+    return callDemoModel({ messages, model, tools, onDelta, demoContext });
+  }
+  return callQwen({ messages, model, maxTokens, tools, onDelta, enableSearch, ...(temperature === undefined ? {} : { temperature }) });
+}
+
+async function callQwenWithLog({ messages, model, maxTokens, requestId, mode, tools = null, onDelta = null, enableSearch = false, demoContext = null }) {
   const start = Date.now();
   try {
-    const result = await callQwen({ messages, model, maxTokens, tools, onDelta, enableSearch });
+    const result = await invokeModel({ messages, model, maxTokens, tools, onDelta, enableSearch, demoContext });
     logCall({
       requestId,
       model: result.model || model,
@@ -488,6 +516,7 @@ async function executeAgent({ payload, requestId, onEvent = () => {}, confirmToo
       requestId,
       mode: "agent",
       tools: stepTools,
+      demoContext: toDemoContext(payload),
     });
 
   let finalEvent = null;

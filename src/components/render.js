@@ -63,7 +63,7 @@ function renderTopbar(state) {
       </div>
       <div class="top-cell">
         <span class="meta-label">API 状态</span>
-        <strong class="status ${state.apiStatus === "正常" ? "ok" : "idle"}"><i></i>${escapeHtml(
+        <strong class="status ${isBackendHealthy(state.apiStatus) ? "ok" : "idle"}"><i></i>${escapeHtml(
           state.apiStatus,
         )}</strong>
       </div>
@@ -309,7 +309,7 @@ function renderSettings(state) {
         .join("")
     : `<option value="${escapeAttr(state.currentModel)}" selected>${escapeHtml(state.currentModel)}</option>`;
 
-  const statusClass = state.apiStatus === "正常" ? "ok" : state.apiStatus === "错误" ? "error" : "idle";
+  const statusClass = isBackendHealthy(state.apiStatus) ? "ok" : state.apiStatus === "错误" ? "error" : "idle";
 
   return `
     <section class="panel settings-panel">
@@ -637,6 +637,12 @@ function queryById(root, id) {
   if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(String(id || ""))) return null;
   const escaped = globalThis.CSS?.escape ? CSS.escape(id) : id.replace(/([ #;?%&,.+*~':"!^$[\]()=>|/@])/g, "\\$1");
   return root.querySelector(`#${escaped}`);
+}
+
+// The backend reports "演示模式" when it is running the offline demo model.
+// That is a healthy backend, just not a live one — it reads green like "正常".
+export function isBackendHealthy(status) {
+  return status === "正常" || status === "演示模式";
 }
 
 // Render streamed HTML tokens as readable plain text: drop complete tags and a

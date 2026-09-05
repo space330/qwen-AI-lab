@@ -2,6 +2,24 @@
 
 基于 Qwen 打造的本地优先 AI agent，当前版本 `2.2.0`，面向个人自用、轻办公和文字工作场景。
 
+## 一分钟试玩（离线演示模式）
+
+没有 API Key 也能把完整形态跑起来：
+
+```powershell
+npm install
+npm run demo
+```
+
+打开 http://127.0.0.1:5173/ ，右上角「API 状态」显示 **演示模式**。
+
+演示模式只把「模型这一轮说什么」换成本地脚本，**工具执行、ReAct 循环、人工确认门、NDJSON
+流式事件、HTML 清洗与图表管线全部照常真跑**；工具参数由脚本从你实际上传的文件和上一步真实的
+工具输出里推导。每条演示回答末尾都带「演示模式」标注，`web_search` 强制走离线 mock，不出网。
+
+配置 `QWEN_API_KEY` 后用 `npm start` 启动即可切回真实千问模型。完整演示脚本（含建议的输入语句
+与看点）见 [`docs/demo.md`](docs/demo.md)。
+
 ## 工程同步死规定
 
 任何工程改动、功能交付、验收结果、版本号变更、仓库治理变更或重要架构调整，完成前必须同步到 Obsidian 对应项目节点。没有完成 Obsidian 同步，不允许宣称任务完成。
@@ -67,6 +85,11 @@ QWEN_SEARCH_MODEL=qwen-plus
 # provider=bocha 时使用的博查 key（留空回退 Mock，仅后端读取）
 BOCHA_API_KEY=
 BOCHA_BASE_URL=https://api.bochaai.com/v1
+
+# 离线演示模式（npm run demo 会自动开启，无需写进 .env）
+DEMO_MODE=0
+DEMO_LATENCY_MS=350
+DEMO_STREAM_INTERVAL_MS=16
 ```
 
 > Agent 模式的 `web_search` **默认复用现有 `QWEN_API_KEY`，通过千问内置联网搜索返回实时结果，无需额外凭据**。如需结构化网页链接，可将 `WEB_SEARCH_PROVIDER` 设为 `bocha` 并配置 `BOCHA_API_KEY`。建议 Agent 模式使用支持函数调用的模型（如 `qwen3.7-max`、`qwen-max`、`qwen-plus`）。
@@ -76,7 +99,8 @@ BOCHA_BASE_URL=https://api.bochaai.com/v1
 ```powershell
 cd "D:\Qwen Agent Lab"
 npm install
-npm start
+npm start        # 真实千问模型（需要 .env 里的 QWEN_API_KEY）
+npm run demo     # 离线演示模式（无需 Key、不出网）
 ```
 
 打开：

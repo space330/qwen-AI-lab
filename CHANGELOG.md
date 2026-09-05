@@ -7,6 +7,33 @@
 
 ---
 
+## [Unreleased] · 离线演示模式（Demo Mode）
+
+### 新增
+- **离线演示模式**（`server/demoModel.js` + `scripts/demo.js`）：`npm run demo` 以 `DEMO_MODE=1`
+  启动，无需 `QWEN_API_KEY`、不出网即可完整演示产品形态。演示模型与 `callQwen` 返回同构
+  （`content / toolCalls / message / model / usage / finishReason`），在 `server/index.js` 的
+  单一模型边界 `invokeModel` 处切换，路由、Agent 循环、NDJSON 流与前端零改动。
+- **只有“模型说话”是脚本**：工具执行、ReAct 循环、步数上限、工具超时与结果截断、
+  `requiresConfirmation` 人工确认门、HTML 白名单清洗与前端图表管线全部照常真跑。工具参数由脚本
+  从**实际上传的文件**与**上一步真实的工具输出**推导，换一份 CSV 图表与结论随之改变。
+- **五个演示剧本**（`pickScenario` 确定性路由）：memory（`memory_search` → `memory_write` 确认门）、
+  csv（`data_analyzer` ×2 → `chart_generator`）、calc（`calculator`）、file（`file_search` →
+  `file_reader`）、research（`web_search` mock → `report_builder`）。
+- **演示脚本文档** `docs/demo.md`：五分钟演示流程、建议输入语句、看点、路由规则与排障。
+
+### 优化
+- `GET /api/health` 增加 `demo` 标记；前端「API 状态」显示「演示模式」并按健康态着色
+  （`isBackendHealthy`）。每条演示回答末尾固定带「演示模式」小节，启动日志同步提示，避免被
+  误认为真实模型输出。
+- 演示模式下 `WEB_SEARCH_PROVIDER` 强制为 `mock`，`.env` 的真实检索配置不会生效。
+
+### 验收
+- 新增 `tests/demoModel.test.js`（12 项），含用真实工具跑通整条 ReAct 循环的端到端断言；
+  全量 `npm test` 120 项通过。
+
+---
+
 ## [2.1.0] - 2026-06-06 · 输出与生态增强（功能交付）
 
 ### 新增

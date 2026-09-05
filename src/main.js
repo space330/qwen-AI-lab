@@ -1002,7 +1002,7 @@ async function syncBackendStatus() {
   try {
     const response = await fetch("/api/health");
     const payload = await response.json();
-    state.apiStatus = response.ok && payload.success ? "正常" : "错误";
+    state.apiStatus = response.ok && payload.success ? (payload.demo ? "演示模式" : "正常") : "错误";
   } catch {
     state.apiStatus = "未连接";
   }

@@ -8,7 +8,17 @@ export const projectRoot = path.resolve(__dirname, "..");
 
 loadEnvFile(path.join(projectRoot, ".env"));
 
+// Demo mode (DEMO_MODE=1, i.e. `npm run demo`): the backend answers from the
+// local scripted demo model instead of the Qwen API, so the whole product —
+// including the real tool loop — runs with no API key. Web search is forced to
+// the offline mock so a demo never reaches the network.
+const demoMode = parseBoolEnv("DEMO_MODE", false);
+
 export const config = {
+  demoMode,
+  // Simulated think time per model turn, and the "吐字式" streaming interval.
+  demoLatencyMs: parseIntEnv("DEMO_LATENCY_MS", 350),
+  demoStreamIntervalMs: parseIntEnv("DEMO_STREAM_INTERVAL_MS", 16),
   port: parseIntEnv("PORT", 5173),
   qwenApiKey: process.env.QWEN_API_KEY || process.env.DASHSCOPE_API_KEY || "",
   qwenModel: process.env.QWEN_MODEL || "qwen3.7-max",
@@ -44,7 +54,7 @@ export const config = {
   // web_search tool provider: "qwen" (reuse the DashScope key via Qwen's
   // built-in web search — no extra credential), "bocha" (博查 real search), or
   // "mock" (force the deterministic placeholder).
-  webSearchProvider: (process.env.WEB_SEARCH_PROVIDER || "qwen").toLowerCase(),
+  webSearchProvider: demoMode ? "mock" : (process.env.WEB_SEARCH_PROVIDER || "qwen").toLowerCase(),
   // Model used for the "qwen" search provider. qwen-plus is fast/cheap and
   // supports enable_search, so search doesn't burn the agent's reasoning model.
   qwenSearchModel: process.env.QWEN_SEARCH_MODEL || "qwen-plus",
@@ -58,6 +68,12 @@ export const config = {
 function parseIntEnv(key, fallback) {
   const value = parseInt(process.env[key] ?? "", 10);
   return Number.isFinite(value) ? value : fallback;
+}
+
+function parseBoolEnv(key, fallback) {
+  const raw = process.env[key];
+  if (raw === undefined || raw === "") return fallback;
+  return ["1", "true", "yes", "on"].includes(String(raw).trim().toLowerCase());
 }
 
 function parseFloatEnv(key, fallback) {
