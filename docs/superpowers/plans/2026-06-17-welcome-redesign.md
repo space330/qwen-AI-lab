@@ -889,59 +889,6 @@ After the renderer warms up (give it a moment post-start; retry once on timeout 
 
 ---
 
-## Task 7: Obsidian vault sync (CLAUDE.md non-negotiable)
-
-**Files (outside repo):**
-- `C:\Users\lenovo\Documents\Obsidian Vault\Qwen Agent Lab.md`
-- `C:\Users\lenovo\Documents\Obsidian Vault\QWEN AI AGENT LAB 总体架构.md`
-- `C:\Users\lenovo\Documents\Obsidian Vault\源码工作区清点.md`
-- `C:\Users\lenovo\Documents\Obsidian Vault\欢迎页重设计.md` (new dedicated note)
-
-- [ ] **Step 1: Create the dedicated redesign note**
-
-Write `C:\Users\lenovo\Documents\Obsidian Vault\欢迎页重设计.md` with:
-
-```markdown
-# 欢迎页重设计（2026-06-17）
-
-## 范围
-重做线上 SPA 首页 renderLanding + .landing-* 样式；landing.html 退役到 docs/design-references。
-
-## 设计
-- 品牌：混合方案 —— Apple 留白/大字号 + 暖米色 + Qwen 橙。
-- 流体：Hero 内 CSS 三光斑（lpFlowA/B/C），mix-blend-mode multiply，滚出视口暂停。
-- 转场：滚动编排，IntersectionObserver 切 .in-view，CSS 做 translateY + rotateX/Y 入场。
-- 五分镜：Hero → 能力总览 → 结构化输出展示 → 工作流 → CTA。
-
-## 新增/改动文件
-- 新增 src/components/landingMotion.js（+ tests/landingMotion.test.js）
-- 改 src/components/landing.js、src/main.js、src/styles.css、tests/landing.test.js
-
-## 验收
-- 单测：node --test tests/landingMotion.test.js、tests/landing.test.js 全绿。
-- 浏览器：无横向溢出（scrollWidth<=innerWidth）、滚动后 .in-view 生效、reduced-motion 冻结、启动转场跳 /app 正常。
-
-## 无障碍/响应式
-- prefers-reduced-motion 冻结光斑与揭示。
-- 1100px 桌面地板 + overflow-x clip；卡片 4→2→1。
-```
-
-- [ ] **Step 2: Append a dated entry to the three default vault nodes**
-
-To each of `Qwen Agent Lab.md`, `QWEN AI AGENT LAB 总体架构.md`, and `源码工作区清点.md`, append a short dated line linking the work, e.g.:
-
-```markdown
-- 2026-06-17 · 欢迎页重设计上线：renderLanding 五分镜 + CSS 流体 Hero + 滚动编排转场（landingMotion.js）。详见 [[欢迎页重设计]]。
-```
-
-(For `源码工作区清点.md`, also note the new file `src/components/landingMotion.js` and the retirement of `landing.html` → `docs/design-references/`.)
-
-- [ ] **Step 3: Confirm sync before claiming completion**
-
-Per CLAUDE.md: do not claim the project work complete until these nodes reflect the new state. Verify each file contains the 2026-06-17 entry.
-
----
-
 ## Final verification
 
 - [ ] **Run the full suite**
@@ -966,7 +913,6 @@ Expected: commits for spec, retire-landing, landingMotion, renderLanding, main w
 - §7 launch transition → Task 5 `.is-launching` + `landingFluidConverge` (reuses main.js hook). ✓
 - §8 a11y/responsive → Task 5 reduced-motion + responsive blocks; Task 2 reduced-motion init branch; Task 6 verification. ✓
 - §9 testing → Tasks 2, 3 (unit) + Task 6 (browser). ✓
-- §10 Obsidian sync → Task 7. ✓
 
 **2. Placeholder scan:** No TBD/TODO; every code step shows full code. ✓
 

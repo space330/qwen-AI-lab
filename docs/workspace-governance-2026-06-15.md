@@ -2,17 +2,6 @@
 
 本清单用于收束 Qwen Agent Lab 当前工作区状态，避免“本地可运行但仓库不完整”。
 
-## 强制同步规则
-
-任何工程改动、功能交付、验收结果、版本号变更、仓库治理变更或重要架构调整，必须在收尾前同步到 Obsidian 对应项目节点。未完成 Obsidian 同步时，该工程任务不得标记为完成。
-
-默认同步节点：
-
-- `C:\Users\lenovo\Documents\Obsidian Vault\Qwen Agent Lab.md`
-- `C:\Users\lenovo\Documents\Obsidian Vault\QWEN AI AGENT LAB 总体架构.md`
-- `C:\Users\lenovo\Documents\Obsidian Vault\源码工作区清点.md`
-- 大版本、验收、问题清单、收束任务应新增独立 Obsidian 节点，并回链到项目总览。
-
 ## 当前验证快照
 
 - 应用版本：`2.2.0`

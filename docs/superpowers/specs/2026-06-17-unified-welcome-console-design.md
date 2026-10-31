@@ -27,4 +27,3 @@ Use approach A: an in-console welcome layer.
 
 - Unit tests cover the new markup and existing landing route.
 - Browser preview verifies `/app` shows the welcome layer and the primary action reveals the console.
-- Obsidian sync is required before completion.

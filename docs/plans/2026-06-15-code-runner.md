@@ -861,7 +861,7 @@ git commit -m "feat(code-runner): integrate into agent prompt and document .env 
 
 ---
 
-### Task 11: 验收与 Obsidian 同步
+### Task 11: 验收
 
 - [ ] **Step 1: Run full test suite one final time**
 
@@ -875,13 +875,7 @@ Expected: ALL PASS (~117 tests)
 - 出现"允许/拒绝"确认按钮
 - 点击允许后代码执行并返回结果
 
-- [ ] **Step 3: Sync to Obsidian**
-
-更新 `C:\Users\lenovo\Documents\Obsidian Vault\下一轮工具能力设计草案.md`，在 `code_runner` 章节标记 `[x] 已实现`。
-
-更新 `C:\Users\lenovo\Documents\Obsidian Vault\Qwen Agent Lab.md` 和 `C:\Users\lenovo\Documents\Obsidian Vault\QWEN AI AGENT LAB 总体架构.md`，记录 V2.3 code_runner 交付。
-
-- [ ] **Step 4: Final commit**
+- [ ] **Step 3: Final commit**
 
 ```bash
 git add -A

@@ -17,7 +17,7 @@ Unify Qwen Agent Lab's scattered liquid-glass styling into a token-driven visual
 2. Extend `src/styles.css` with the unified token set.
 3. Replace major hard-coded glass backgrounds, borders, shadows, and large blur values with token references.
 4. Reduce repeated expensive `backdrop-filter` use on nested regions and floating panels.
-5. Update project notes and Obsidian records because visual system changes are engineering changes.
+5. Update project documentation to reflect the visual system changes.
 
 ## Verification
 
