@@ -4,23 +4,6 @@ Express server (`server/index.js`) serving a vanilla-JS SPA from `src/`. The con
 UI lives at `/app`; `/` is the landing page. Dev/start: `npm start` → port **5173**
 (`PORT` in `.env`). Tests: `npm test` (node:test, `tests/*.test.js`).
 
-## Non-negotiable Obsidian sync rule
-
-Any engineering change, feature delivery, acceptance result, version update, repository
-governance change, or meaningful architecture decision must be synced to the Obsidian
-vault before the work is considered complete.
-
-Default vault targets:
-
-- `C:\Users\lenovo\Documents\Obsidian Vault\Qwen Agent Lab.md`
-- `C:\Users\lenovo\Documents\Obsidian Vault\QWEN AI AGENT LAB 总体架构.md`
-- `C:\Users\lenovo\Documents\Obsidian Vault\源码工作区清点.md`
-- Add a dedicated version, acceptance, issue, or closure note when the change is large
-  enough to need its own record.
-
-Do not claim completion for project work until the relevant Obsidian nodes reflect the
-current engineering state.
-
 ## Browser-preview verification convention
 
 When verifying UI changes with the `preview_*` tools, the **text-based checks are the

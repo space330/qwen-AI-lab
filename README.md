@@ -2,17 +2,6 @@
 
 基于 Qwen 打造的本地优先 AI agent，当前版本 `2.2.0`，面向个人自用、轻办公和文字工作场景。
 
-## 工程同步死规定
-
-任何工程改动、功能交付、验收结果、版本号变更、仓库治理变更或重要架构调整，完成前必须同步到 Obsidian 对应项目节点。没有完成 Obsidian 同步，不允许宣称任务完成。
-
-默认同步位置：
-
-- `C:\Users\lenovo\Documents\Obsidian Vault\Qwen Agent Lab.md`
-- `C:\Users\lenovo\Documents\Obsidian Vault\QWEN AI AGENT LAB 总体架构.md`
-- `C:\Users\lenovo\Documents\Obsidian Vault\源码工作区清点.md`
-- 必要时新增对应版本、验收、问题清单或收束记录节点。
-
 ## 当前能力
 
 - 控制台式界面：顶部栏、左侧模式栏、中间 AI 输出区、底部固定输入区。
@@ -72,6 +61,12 @@ BOCHA_BASE_URL=https://api.bochaai.com/v1
 > Agent 模式的 `web_search` **默认复用现有 `QWEN_API_KEY`，通过千问内置联网搜索返回实时结果，无需额外凭据**。如需结构化网页链接，可将 `WEB_SEARCH_PROVIDER` 设为 `bocha` 并配置 `BOCHA_API_KEY`。建议 Agent 模式使用支持函数调用的模型（如 `qwen3.7-max`、`qwen-max`、`qwen-plus`）。
 
 ## 运行方式
+
+Windows 本机启动：解压完整项目后双击根目录 `Start-Qwen.cmd`（需安装 Node.js，推荐当前 LTS）。首次启动会安装锁定依赖，然后启动服务并自动打开 `/app` 控制台；端口被占用时自动选择空闲端口。保持启动窗口打开，按 `Ctrl+C` 停止服务。
+
+启动器会在缺少 `.env` 时创建密钥留空的本地配置。界面可以先打开；真实 AI 回答仍需在 `.env` 中填写 DashScope 密钥并重启。已有 `.env` 会保留。
+
+跨平台也可运行 `node scripts/start-local.mjs`；加 `--no-open` 仅启动服务，不自动打开浏览器。
 
 ```powershell
 cd "D:\Qwen Agent Lab"
